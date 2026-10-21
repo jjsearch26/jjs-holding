@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" data-layout="full-bleed" data-transition-preview="true">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071b2d">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Jonathan James Search. January 2027.">
+<meta name="jjs-release" content="local-day-night-v1">
+<title>JJS | Day-to-night transition preview</title>
+<style>
+:root{color-scheme:dark;--ivory:#eee7dc;--navy:#071b2d}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--navy);color:var(--ivory)}
+body{font-family:Arial,Helvetica,sans-serif}
+main{position:fixed;inset:0;height:100vh;height:100dvh;overflow:hidden;background:#05090e}
+
+.film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%;display:block}
+#film-poster:not([src]){visibility:hidden}
+video.film{opacity:0;transition:opacity 2s ease-in-out}
+video.film.is-visible{opacity:1}
+@media(prefers-reduced-motion:reduce){video.film{transition:none}}
+.controls{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:2;display:flex;gap:8px}
+button{min-height:44px;padding:10px 15px;border:1px solid #eee7dc66;background:#071b2dcc;color:var(--ivory);border-radius:2px;font:12px Arial,Helvetica,sans-serif;letter-spacing:.04em;cursor:pointer;backdrop-filter:blur(8px)}
+button:focus-visible{outline:2px solid var(--ivory);outline-offset:4px}
+[hidden]{display:none!important}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(orientation:portrait){.film{object-fit:cover;object-position:50% 18%}.controls{right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom))}}
+
+.transition-preview{position:fixed;top:max(14px,env(safe-area-inset-top));left:max(14px,env(safe-area-inset-left));z-index:4;display:flex;align-items:center;gap:12px;padding:8px 10px;background:#10263ce8;border:1px solid #b4986188;color:#faf7ef;font:12px/1.4 Arial,Helvetica,sans-serif}
+.transition-preview button{border-color:#b49861;background:#10263c;min-width:175px;backdrop-filter:none}
+.transition-preview span{min-width:65px}
+@media(max-width:600px){.transition-preview{right:max(14px,env(safe-area-inset-right));justify-content:space-between;gap:8px}.transition-preview button{min-width:0;font-size:11px;padding:10px}.transition-preview span{font-size:11px;min-width:0}}
+</style>
+<link rel="stylesheet" href="/contact.css?v=contact-v1">
+</head>
+<body>
+<aside class="transition-preview" aria-label="Day and night transition preview"><button id="preview-transition" type="button" disabled>Loading daytime…</button><span id="preview-period" role="status" aria-live="polite">Preview</span></aside>
+<main aria-label="Jonathan James Search launch film">
+<h1 class="sr-only">Jonathan James Search — January 2027</h1>
+<img class="film" id="film-poster" alt="JJS rooftop branding above the Austin skyline, January 2027">
+<noscript><picture><source media="(max-width:900px) and (orientation:portrait)" srcset="/austin-mobile-sharp-v2.jpg"><img class="film" src="/austin-desktop-sharp-v4.jpg" alt="Jonathan James Search, launching January 2027"></picture></noscript>
+<video class="film" id="launch-video" muted loop playsinline webkit-playsinline preload="auto" aria-label="JJS rooftop launch film"></video>
+<video class="film" id="launch-video-next" muted loop playsinline webkit-playsinline preload="auto" aria-label="JJS rooftop launch film"></video>
+</main>
+<div class="controls">
+<button id="play" type="button" hidden>Play video</button>
+<button id="sound" type="button" aria-pressed="false">Sound on</button>
+</div>
+<p class="sr-only" id="status" role="status" aria-live="polite"></p>
+<script src="/film-loader.js?v=auto-v1"></script>
+<script src="/holding-schedule.js?v=auto-v1"></script>
+<script src="/holding.js?v=auto-v1"></script>
+<script src="/contact.js?v=contact-v1"></script>
+</body>
+</html>

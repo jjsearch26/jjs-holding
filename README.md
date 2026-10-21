@@ -2,7 +2,7 @@
 
 Published at https://jjs-holding.pages.dev/ from the main branch. No build command; publish repository root.
 
-Portrait mobile screens use the user-approved Austin rooftop film, with its original soundtrack. Desktop uses stabilized Austin landscape footage, the same approved neon sign artwork used for mobile, composited directly into the rooftop view, January 2027, a smooth thirty-second zoom loop at 60 frames per second, and muffled traffic with a distant siren.
+The main holding page automatically selects the approved daytime films from 07:00 up to 19:00, and the approved night-time films from 19:00 until 07:00, using the visitor’s local clock. Portrait mobile screens automatically use the corresponding mobile export; other viewports use desktop. Night-time desktop retains the approved 0.5 playback speed. Both periods retain their existing branding, video quality, traffic and ambience.
 
 Both layouts fill the viewport without stretching. Video autoplays muted and loops; Sound on enables audio. Reduced-motion visitors and browsers blocking autoplay can start playback with Play video.
 
@@ -32,3 +32,11 @@ Each comparison route supports `?layout=full-bleed` and `?layout=framed`, with a
 Every holding-page and comparison layout shares `contact.css` and `contact.js`. The navy and gold “Start a conversation” button opens a compact ivory dialog on desktop and a bottom sheet on mobile. The existing video continues to play behind the dialog. Name, work email and inquiry are required; company is optional. The form keeps entered values if a request fails and only displays the approved confirmation after an explicitly successful provider response. Native dialogs provide keyboard focus management and Escape-to-close.
 
 Delivery uses the FormSubmit AJAX endpoint for `jonathan.mcmanus@jj-search.com`, with the visitor’s email in Reply-To and the company in the subject. All variants use the canonical origin as `_url` so a single activation serves the comparison routes. The exact page and film variant accompany each inquiry. A honeypot is included; no visitor data is stored in the repository or browser storage. The first submission requires the recipient to click FormSubmit’s activation email before delivery is enabled. Failure or pending activation displays a direct email fallback rather than a false sent confirmation. This activation must be completed for each new domain before using it for client inquiries.
+
+## Automatic day and night
+
+`holding-schedule.js` selects the film and calculates the next local 07:00 or 19:00 boundary with local calendar arithmetic, including daylight-saving changes. `holding.js` checks at that boundary, on orientation or visibility changes, and once a minute to catch clock/timezone changes. It loads the incoming video before replacing the current one and uses a restrained crossfade. Reduced-motion preferences disable the fade and automatic playback. Obsolete loads and finished video object URLs are released. Changing the film leaves the inquiry dialog and entered form values intact.
+
+The main page always fills the screen. All four fixed comparison routes now default to full bleed too; the earlier framed examples remain available only through an explicit `?layout=framed` link. Fixed comparison routes continue to show their named film for direct review.
+
+`/transition-preview/` demonstrates the exact two-second day/night crossfade with the original moving videos. It starts in daytime, switches to night once after five seconds, and offers a replay button in either direction. Its preview override is scoped to that page; the main holding page always follows the visitor’s clock.

@@ -1,6 +1,11 @@
 (()=>{
  const loads=new WeakMap();
  let catalogue;
+ window.jjsReleaseFilm=function(video){
+  const previous=loads.get(video);
+  if(previous){loads.delete(video);previous.abort.abort();if(previous.url)URL.revokeObjectURL(previous.url);}
+  video.pause();video.removeAttribute('src');video.load();
+ };
  window.jjsLoadFilm=async function(video,key){
   const previous=loads.get(video);
   if(previous){previous.abort.abort();if(previous.url)URL.revokeObjectURL(previous.url);}

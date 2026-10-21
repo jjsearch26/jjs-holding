@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-layout="full-bleed">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071b2d">
 <meta name="robots" content="noindex,nofollow">
 <meta name="description" content="Jonathan James Search. January 2027.">
-<meta name="jjs-release" content="austin-night-sharp-comparison-v1">
+<meta name="jjs-release" content="local-day-night-v1">
 <title>Jonathan James Search | January 2027</title>
 <style>
 :root{color-scheme:dark;--ivory:#eee7dc;--navy:#071b2d}
@@ -16,8 +16,10 @@ body{font-family:Arial,Helvetica,sans-serif}
 main{position:fixed;inset:0;height:100vh;height:100dvh;overflow:hidden;background:#05090e}
 
 .film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%;display:block}
-video.film{opacity:0}
-video.film.ready{opacity:1}
+#film-poster:not([src]){visibility:hidden}
+video.film{opacity:0;transition:opacity 2s ease-in-out}
+video.film.is-visible{opacity:1}
+@media(prefers-reduced-motion:reduce){video.film{transition:none}}
 .controls{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:2;display:flex;gap:8px}
 button{min-height:44px;padding:10px 15px;border:1px solid #eee7dc66;background:#071b2dcc;color:var(--ivory);border-radius:2px;font:12px Arial,Helvetica,sans-serif;letter-spacing:.04em;cursor:pointer;backdrop-filter:blur(8px)}
 button:focus-visible{outline:2px solid var(--ivory);outline-offset:4px}
@@ -31,56 +33,19 @@ button:focus-visible{outline:2px solid var(--ivory);outline-offset:4px}
 <body>
 <main aria-label="Jonathan James Search launch film">
 <h1 class="sr-only">Jonathan James Search — January 2027</h1>
-<picture><source media="(max-width:900px) and (orientation:portrait)" srcset="austin-mobile-sharp-v2.jpg"><img class="film" src="austin-desktop-sharp-v4.jpg" alt="JJS rooftop neon branding above the Austin skyline, January 2027"></picture>
-<video class="film" id="launch-video" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="Austin rooftop launch film">
-
-</video>
+<img class="film" id="film-poster" alt="JJS rooftop branding above the Austin skyline, January 2027">
+<noscript><picture><source media="(max-width:900px) and (orientation:portrait)" srcset="/austin-mobile-sharp-v2.jpg"><img class="film" src="/austin-desktop-sharp-v4.jpg" alt="Jonathan James Search, launching January 2027"></picture></noscript>
+<video class="film" id="launch-video" muted loop playsinline webkit-playsinline preload="auto" aria-label="JJS rooftop launch film"></video>
+<video class="film" id="launch-video-next" muted loop playsinline webkit-playsinline preload="auto" aria-label="JJS rooftop launch film"></video>
 </main>
 <div class="controls">
 <button id="play" type="button" hidden>Play video</button>
 <button id="sound" type="button" aria-pressed="false">Sound on</button>
 </div>
 <p class="sr-only" id="status" role="status" aria-live="polite"></p>
-<script src="/film-loader.js"></script>
-<script>
-(()=>{
-const video=document.getElementById('launch-video');
-const sound=document.getElementById('sound');
-const play=document.getElementById('play');
-const status=document.getElementById('status');
-const reduce=matchMedia('(prefers-reduced-motion: reduce)');
-const portrait=matchMedia('(max-width:900px) and (orientation:portrait)');
-let requested=!reduce.matches;
-video.muted=true;video.defaultMuted=true;video.playsInline=true;
-function syncSound(){sound.textContent=video.muted?'Sound on':'Sound off';sound.setAttribute('aria-pressed',String(!video.muted));}
-async function start(explicit=false){
-if(document.hidden||(!requested&&!explicit))return;
-try{await video.play();play.hidden=true;}catch(e){play.hidden=false;status.textContent='Select Play video to start the film.';}
-}
-video.addEventListener('playing',()=>{video.classList.add('ready');play.hidden=true;});
-video.addEventListener('error',()=>{video.classList.remove('ready');play.hidden=true;sound.hidden=true;status.textContent='Austin rooftop image shown. Video unavailable.';});
-video.addEventListener('volumechange',syncSound);
-play.addEventListener('click',()=>{requested=true;start(true);});
-sound.addEventListener('click',async()=>{video.muted=!video.muted;syncSound();requested=true;await start(true);});
-document.addEventListener('visibilitychange',()=>{if(document.hidden)video.pause();else start();});
-reduce.addEventListener('change',()=>{requested=!reduce.matches;if(requested)start();else{video.pause();play.hidden=false;}});
-async function selectFilm(){
-video.classList.remove('ready');
-sound.hidden=false;
-video.style.objectPosition=portrait.matches?'50% 18%':'center center';
-video.poster=portrait.matches?'austin-mobile-sharp-v2.jpg':'austin-desktop-sharp-v4.jpg';
-const film=portrait.matches?'austin-mobile-sharp-v2':'austin-desktop-sharp-v4';
-video.defaultPlaybackRate=portrait.matches?1:0.5;
-video.playbackRate=portrait.matches?1:0.5;
-try{if(await window.jjsLoadFilm(video,film))start();}catch{video.classList.remove('ready');sound.hidden=true;status.textContent='Austin rooftop image shown. Video unavailable.';}
-}
-portrait.addEventListener('change',selectFilm);
-window.addEventListener('pageshow',()=>start());
-selectFilm();
-if(reduce.matches){video.autoplay=false;video.pause();play.hidden=false;}else start();
-syncSound();
-})();
-</script>
+<script src="/film-loader.js?v=auto-v1"></script>
+<script src="/holding-schedule.js?v=auto-v1"></script>
+<script src="/holding.js?v=auto-v1"></script>
 <script src="/contact.js?v=contact-v1"></script>
 </body>
 </html>
