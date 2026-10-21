@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Jonathan James Search. January 2027.">
+<title>Jonathan James Search | January 2027</title>
+<style>
+:root { color-scheme:light; --ivory:#eee7dc; --navy:#071b2d; }
+* { box-sizing:border-box; }
+html,body { margin:0; min-height:100%; background:var(--ivory); color:var(--navy); }
+body { font-family:Arial,Helvetica,sans-serif; }
+main { display:grid; place-items:center; min-height:100svh; }
+.film { width:100%; height:100svh; position:relative; overflow:hidden; }
+.film img,.film video { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+.film video { opacity:0; pointer-events:none; }
+.film.is-playing video { opacity:1; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+footer { padding:10px max(22px,env(safe-area-inset-right)) 18px max(22px,env(safe-area-inset-left)); font-size:12px; color:#4c5b61; }
+summary { cursor:pointer; display:list-item; width:max-content; padding:9px 0; }
+button { min-height:44px; padding:9px 16px; border:1px solid #8a8f8c; color:var(--navy); background:transparent; cursor:pointer; font:inherit; }
+button:focus-visible,summary:focus-visible { outline:2px solid var(--navy); outline-offset:4px; }
+footer p { margin:8px 0 2px; line-height:1.4; }
+</style>
+</head>
+<body>
+<main>
+<h1 class="sr-only">Jonathan James Search — January 2027</h1>
+<div class="film" id="film">
+<img src="reception-poster.jpg" alt="JJS reception featuring the Jonathan James Search logo and January 2027 announcement." width="1920" height="1080" fetchpriority="high">
+<video id="reception-video" muted playsinline loop preload="metadata" poster="reception-poster.jpg" aria-hidden="true" tabindex="-1" width="1920" height="1080">
+<source media="(max-width: 760px)" src="reception-loop-mobile.mp4" type="video/mp4">
+<source src="reception-loop.mp4" type="video/mp4">
+</video>
+</div>
+</main>
+<footer>
+<details>
+<summary>Video settings</summary>
+<button id="motion" type="button" aria-controls="reception-video">Play video</button>
+<p id="status" role="status" aria-live="polite">Silent reception film.</p>
+</details>
+</footer>
+<script>
+(function () {
+  'use strict';
+  const video=document.getElementById('reception-video');
+  const film=document.getElementById('film');
+  const button=document.getElementById('motion');
+  const status=document.getElementById('status');
+  const motion=window.matchMedia('(prefers-reduced-motion: reduce)');
+  let requested=!motion.matches;
+  let inView=true;
+  let pending=false;
+  let blocked=false;
+  video.muted=true;
+  video.defaultMuted=true;
+  video.playsInline=true;
+  video.autoplay=requested;
+  function sync() {
+    button.textContent=video.paused?'Play video':'Pause video';
+    button.setAttribute('aria-label', video.paused?'Play silent background video':'Pause background video');
+  }
+  function play(explicit) {
+    if (pending || video.error || document.hidden || (!explicit && (!requested || !inView || blocked))) return;
+    pending=true;
+    video.muted=true;
+    const attempt=video.play();
+    if (attempt && typeof attempt.then==='function') {
+      attempt.then(function(){pending=false; sync();}).catch(function(error){
+        pending=false;
+        if(error.name==='AbortError') return;
+        blocked=true;
+        status.textContent='The still image is shown. Use Play video to start the silent film.';
+        sync();
+      });
+    } else { pending=false; sync(); }
+  }
+  video.addEventListener('playing',function(){
+    pending=false; blocked=false;
+    film.classList.add('is-playing');
+    status.textContent='Silent reception film playing.';
+    sync();
+  });
+  video.addEventListener('pause',function(){status.textContent='Reception film paused.'; sync();});
+  video.addEventListener('error',function(){
+    pending=false; blocked=true;
+    film.classList.remove('is-playing');
+    button.disabled=true;
+    status.textContent='The still image is shown because the video could not be loaded.';
+  });
+  video.addEventListener('canplay',function(){play(false);});
+  button.addEventListener('click',function(){
+    if(video.paused){requested=true; blocked=false; play(true);}
+    else{requested=false; video.pause();}
+  });
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden)video.pause(); else play(false);
+  });
+  window.addEventListener('pageshow',function(){play(false);});
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(function(entries){
+      inView=entries[0].isIntersecting;
+      if(inView)play(false); else video.pause();
+    },{threshold:.05});
+    observer.observe(film);
+  }
+  function motionChanged(){
+    requested=!motion.matches; blocked=false;
+    video.autoplay=requested;
+    if(requested)play(false); else{
+      video.pause(); film.classList.remove('is-playing');
+      status.textContent='Reduced-motion preference respected. Use Play video to start manually.';
+      sync();
+    }
+  }
+  if(motion.addEventListener)motion.addEventListener('change',motionChanged);
+  else if(motion.addListener)motion.addListener(motionChanged);
+  if(requested)play(false); else motionChanged();
+})();
+</script>
+</body>
+</html>
