@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#071b2d">
 <meta name="robots" content="noindex,nofollow">
 <meta name="description" content="Jonathan James Search. January 2027.">
-<meta name="jjs-release" content="approved-mobile-v1">
+<meta name="jjs-release" content="austin-desktop-clear-v1">
 <title>Jonathan James Search | January 2027</title>
 <style>
 :root{color-scheme:dark;--ivory:#eee7dc;--navy:#071b2d}
@@ -30,7 +30,7 @@ button:focus-visible{outline:2px solid var(--ivory);outline-offset:4px}
 <body>
 <main aria-label="Jonathan James Search launch film">
 <h1 class="sr-only">Jonathan James Search — January 2027</h1>
-<picture><source media="(max-width:900px) and (orientation:portrait)" srcset="austin-mobile-approved.jpg"><img class="film" src="reception-desktop.jpg" alt="JJS rooftop neon branding above the Austin skyline, January 2027"></picture>
+<picture><source media="(max-width:900px) and (orientation:portrait)" srcset="austin-mobile-approved.jpg"><img class="film" src="austin-desktop-clear.jpg" alt="JJS rooftop neon branding above the Austin skyline, January 2027"></picture>
 <video class="film" id="launch-video" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="Thirty-second Austin rooftop film">
 
 </video>
@@ -64,10 +64,10 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden)video.pause
 reduce.addEventListener('change',()=>{requested=!reduce.matches;if(requested)start();else{video.pause();play.hidden=false;}});
 function selectFilm(){
 video.classList.remove('ready');
-sound.hidden=!portrait.matches;
+sound.hidden=false;
 video.style.objectPosition=portrait.matches?'50% 18%':'center center';
-video.poster=portrait.matches?'austin-mobile-approved.jpg':'reception-desktop.jpg';
-video.src=portrait.matches?'austin-mobile-approved.mp4':'reception-desktop.mp4';
+video.poster=portrait.matches?'austin-mobile-approved.jpg':'austin-desktop-clear.jpg';
+video.src=portrait.matches?'austin-mobile-approved.mp4':'austin-desktop-clear.mp4';
 video.load();start();
 }
 portrait.addEventListener('change',selectFilm);
