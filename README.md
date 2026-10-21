@@ -1,13 +1,21 @@
 # JJS — January 2027 Holding Page
 
-This repository contains the approved Jonathan James Search holding page.
+Standalone holding page for Jonathan James Search.
 
-## Production assets
-- `index.html` — standalone holding page
-- `reception-loop.mp4` — approved silent 20-second desktop loop
-- `reception-loop-mobile.mp4` — lighter mobile version
-- `reception-poster.jpg` — static fallback / first-frame poster
+## Approved treatment
+- Reception artwork approved by Jonathan McManus
+- Silent 20-second forward-and-back loop
+- JJS logo and “JANUARY 2027” remain unchanged
+- Muted inline autoplay requested
+- Reduced-motion preference respected
+- Approved still shown automatically if playback is blocked
 
-The page requests muted inline autoplay, respects reduced-motion preferences, and falls back to the approved still image if video playback is blocked.
+## Deployment
+The production page is self-contained in `index.html`, including an optimized web copy of the approved loop and its poster image. No build step is required.
 
-This repository is intentionally separate from the existing `JJS` and `JJSnew` website repositories.
+For Cloudflare Pages:
+- Production branch: `main`
+- Build command: leave blank
+- Build/output directory: repository root
+
+This repository is intentionally separate from `JJS` and `JJSnew`.
