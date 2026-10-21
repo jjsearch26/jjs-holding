@@ -33,8 +33,16 @@ button:focus-visible,.motion summary:focus-visible{outline:2px solid var(--navy)
 /* The reception film occupies the entire available browser viewport. */
 main{height:100vh;min-height:100vh;height:100dvh;min-height:100dvh}
 .motion[hidden]{display:none!important}
+
+/* Start portrait screens on the reception and sign, with less ceiling/floor. */
+@media (max-width:900px) and (orientation:portrait){
+ .film img,.film video{transform:scale(1.7);transform-origin:50% 45%;object-position:center center}
+}
+@media (max-width:900px) and (orientation:portrait) and (max-aspect-ratio:1/2){
+ .film img,.film video{transform:scale(1.5)}
+}
 </style>
-<meta name="jjs-release" content="sharp-portrait-film-v1">
+<meta name="jjs-release" content="sharp-portrait-close-v2">
 </head>
 <body>
 <main>
