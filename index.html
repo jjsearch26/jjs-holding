@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#071b2d">
 <meta name="robots" content="noindex,nofollow">
 <meta name="description" content="Jonathan James Search. January 2027.">
-<meta name="jjs-release" content="austin-desktop-mobile-speed-match">
+<meta name="jjs-release" content="austin-night-sharp-comparison-v1">
 <title>Jonathan James Search | January 2027</title>
 <style>
 :root{color-scheme:dark;--ivory:#eee7dc;--navy:#071b2d}
@@ -30,7 +30,7 @@ button:focus-visible{outline:2px solid var(--ivory);outline-offset:4px}
 <body>
 <main aria-label="Jonathan James Search launch film">
 <h1 class="sr-only">Jonathan James Search — January 2027</h1>
-<picture><source media="(max-width:900px) and (orientation:portrait)" srcset="austin-mobile-approved.jpg"><img class="film" src="austin-desktop-smooth-v3.jpg" alt="JJS rooftop neon branding above the Austin skyline, January 2027"></picture>
+<picture><source media="(max-width:900px) and (orientation:portrait)" srcset="austin-mobile-sharp-v2.jpg"><img class="film" src="austin-desktop-sharp-v4.jpg" alt="JJS rooftop neon branding above the Austin skyline, January 2027"></picture>
 <video class="film" id="launch-video" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="Austin rooftop launch film">
 
 </video>
@@ -40,6 +40,7 @@ button:focus-visible{outline:2px solid var(--ivory);outline-offset:4px}
 <button id="sound" type="button" aria-pressed="false">Sound on</button>
 </div>
 <p class="sr-only" id="status" role="status" aria-live="polite"></p>
+<script src="/film-loader.js"></script>
 <script>
 (()=>{
 const video=document.getElementById('launch-video');
@@ -62,15 +63,15 @@ play.addEventListener('click',()=>{requested=true;start(true);});
 sound.addEventListener('click',async()=>{video.muted=!video.muted;syncSound();requested=true;await start(true);});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)video.pause();else start();});
 reduce.addEventListener('change',()=>{requested=!reduce.matches;if(requested)start();else{video.pause();play.hidden=false;}});
-function selectFilm(){
+async function selectFilm(){
 video.classList.remove('ready');
 sound.hidden=false;
 video.style.objectPosition=portrait.matches?'50% 18%':'center center';
-video.poster=portrait.matches?'austin-mobile-approved.jpg':'austin-desktop-smooth-v3.jpg';
-video.src=portrait.matches?'austin-mobile-approved.mp4':'austin-desktop-smooth-v3.mp4';
+video.poster=portrait.matches?'austin-mobile-sharp-v2.jpg':'austin-desktop-sharp-v4.jpg';
+const film=portrait.matches?'austin-mobile-sharp-v2':'austin-desktop-sharp-v4';
 video.defaultPlaybackRate=portrait.matches?1:0.5;
 video.playbackRate=portrait.matches?1:0.5;
-video.load();start();
+try{if(await window.jjsLoadFilm(video,film))start();}catch{video.classList.remove('ready');sound.hidden=true;status.textContent='Austin rooftop image shown. Video unavailable.';}
 }
 portrait.addEventListener('change',selectFilm);
 window.addEventListener('pageshow',()=>start());
