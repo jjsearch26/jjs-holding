@@ -1,4 +1,17 @@
 (()=>{
+ const fullBleed=document.documentElement.dataset.layout==='full-bleed';
+ const switchLink=document.getElementById('layout-switch');
+ const switchURL=new URL(location.href);
+ switchURL.searchParams.set('layout',fullBleed?'framed':'full-bleed');
+ if(switchLink){
+  switchLink.href=switchURL.href;
+  switchLink.textContent=fullBleed?'Framed view':'Full bleed';
+  switchLink.setAttribute('aria-label',fullBleed?'Switch to framed view':'Switch to full bleed view');
+ }
+ document.title+=fullBleed?' | Full bleed':' | Framed';
+ document.querySelectorAll('nav a').forEach(link=>{
+  const target=new URL(link.href);target.searchParams.set('layout',fullBleed?'full-bleed':'framed');link.href=target.href;
+ });
  const video=document.getElementById('film');
  const play=document.getElementById('play');
  const sound=document.getElementById('sound');
@@ -12,6 +25,7 @@
  video.defaultPlaybackRate=speed;video.playbackRate=speed;
  function sync(){
   play.textContent=loaded?(video.paused?'Play':'Pause'):'Loading…';
+  play.dataset.playing=String(loaded&&!video.paused);
   sound.textContent=video.muted?'Sound on':'Sound off';
   sound.setAttribute('aria-pressed',String(!video.muted));
  }
