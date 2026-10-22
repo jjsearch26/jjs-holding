@@ -32,7 +32,7 @@ button:focus-visible{outline:2px solid var(--ivory);outline-offset:4px}
 .transition-preview span{min-width:65px}
 @media(max-width:600px){.transition-preview{right:max(14px,env(safe-area-inset-right));justify-content:space-between;gap:8px}.transition-preview button{min-width:0;font-size:11px;padding:10px}.transition-preview span{font-size:11px;min-width:0}}
 </style>
-<link rel="stylesheet" href="/contact.css?v=contact-v2">
+<link rel="stylesheet" href="/contact.css?v=contact-v3">
 </head>
 <body>
 <aside class="transition-preview" aria-label="Day and night transition preview"><button id="preview-transition" type="button" disabled>Loading daytime…</button><span id="preview-period" role="status" aria-live="polite">Preview</span></aside>
@@ -40,8 +40,8 @@ button:focus-visible{outline:2px solid var(--ivory);outline-offset:4px}
 <h1 class="sr-only">Jonathan James Search — January 2027</h1>
 <img class="film" id="film-poster" alt="JJS rooftop branding above the Austin skyline, January 2027">
 <noscript><picture><source media="(max-width:900px) and (orientation:portrait)" srcset="/austin-mobile-sharp-v2.jpg"><img class="film" src="/austin-desktop-sharp-v4.jpg" alt="Jonathan James Search, launching January 2027"></picture></noscript>
-<video class="film" id="launch-video" muted loop playsinline webkit-playsinline preload="auto" aria-label="JJS rooftop launch film"></video>
-<video class="film" id="launch-video-next" muted loop playsinline webkit-playsinline preload="auto" aria-label="JJS rooftop launch film"></video>
+<video disablepictureinpicture class="film" id="launch-video" muted loop playsinline webkit-playsinline preload="auto" aria-label="JJS rooftop launch film"></video>
+<video disablepictureinpicture class="film" id="launch-video-next" muted loop playsinline webkit-playsinline preload="auto" aria-label="JJS rooftop launch film"></video>
 </main>
 <div class="controls">
 <button id="play" type="button" hidden>Play video</button>
@@ -51,6 +51,6 @@ button:focus-visible{outline:2px solid var(--ivory);outline-offset:4px}
 <script src="/film-loader.js?v=auto-v1"></script>
 <script src="/holding-schedule.js?v=auto-v1"></script>
 <script src="/holding.js?v=auto-v1"></script>
-<script src="/contact.js?v=contact-v2"></script>
+<script src="/contact.js?v=contact-v3"></script>
 </body>
 </html>

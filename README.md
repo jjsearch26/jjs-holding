@@ -4,7 +4,7 @@ Published at https://jjs-holding.pages.dev/ from the main branch. No build comma
 
 The main holding page automatically selects the approved daytime films from 07:00 up to 19:00, and the approved night-time films from 19:00 until 07:00, using the visitor’s local clock. Portrait mobile screens automatically use the corresponding mobile export; other viewports use desktop. Night-time desktop retains the approved 0.5 playback speed. Both periods retain their existing branding, video quality, traffic and ambience.
 
-Both layouts fill the viewport without stretching. Video autoplays muted and loops; Sound on enables audio. Reduced-motion visitors and browsers blocking autoplay can start playback with Play video.
+Both layouts fill the viewport without stretching. Video autoplays muted and loops; Sound on enables audio. Every video opts out of picture-in-picture, and the site-wide Permissions Policy disables that feature to suppress browser pop-out controls. Reduced-motion visitors and browsers blocking autoplay can start playback with Play video.
 
 The desktop sign reuses the approved mobile reference artwork, including its neon tube appearance, cool blue-white halo, warm gold rules and launch date. It is not re-generated frame by frame.
 

@@ -28,15 +28,15 @@ button:focus-visible{outline:2px solid var(--ivory);outline-offset:4px}
 @media(orientation:portrait){.film{object-fit:cover;object-position:50% 18%}.controls{right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom))}}
 
 </style>
-<link rel="stylesheet" href="/contact.css?v=contact-v2">
+<link rel="stylesheet" href="/contact.css?v=contact-v3">
 </head>
 <body>
 <main aria-label="Jonathan James Search launch film">
 <h1 class="sr-only">Jonathan James Search — January 2027</h1>
 <img class="film" id="film-poster" alt="JJS rooftop branding above the Austin skyline, January 2027">
 <noscript><picture><source media="(max-width:900px) and (orientation:portrait)" srcset="/austin-mobile-sharp-v2.jpg"><img class="film" src="/austin-desktop-sharp-v4.jpg" alt="Jonathan James Search, launching January 2027"></picture></noscript>
-<video class="film" id="launch-video" muted loop playsinline webkit-playsinline preload="auto" aria-label="JJS rooftop launch film"></video>
-<video class="film" id="launch-video-next" muted loop playsinline webkit-playsinline preload="auto" aria-label="JJS rooftop launch film"></video>
+<video disablepictureinpicture class="film" id="launch-video" muted loop playsinline webkit-playsinline preload="auto" aria-label="JJS rooftop launch film"></video>
+<video disablepictureinpicture class="film" id="launch-video-next" muted loop playsinline webkit-playsinline preload="auto" aria-label="JJS rooftop launch film"></video>
 </main>
 <div class="controls">
 <button id="play" type="button" hidden>Play video</button>
@@ -46,6 +46,6 @@ button:focus-visible{outline:2px solid var(--ivory);outline-offset:4px}
 <script src="/film-loader.js?v=auto-v1"></script>
 <script src="/holding-schedule.js?v=auto-v1"></script>
 <script src="/holding.js?v=auto-v1"></script>
-<script src="/contact.js?v=contact-v2"></script>
+<script src="/contact.js?v=contact-v3"></script>
 </body>
 </html>
