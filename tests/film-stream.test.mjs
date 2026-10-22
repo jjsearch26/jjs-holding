@@ -39,6 +39,11 @@ test('handles asset servers that return the whole part',async()=>{
  const response=await onRequest(context({range:'bytes=4-7',rangedAssets:false}));
  assert.equal(await response.text(),'EFGH');
 });
+test('streams complete parts from an asset server without range support',async()=>{
+ const response=await onRequest(context({rangedAssets:false}));
+ assert.equal(response.status,200);
+ assert.equal(await response.text(),'ABCDEFGHIJKLMNO');
+});
 test('supports suffix, open-ended and clipped ranges',async()=>{
  for(const [range,expected] of [['bytes=-4','LMNO'],['bytes=12-','MNO'],['bytes=13-99','NO']]) {
   assert.equal(await (await onRequest(context({range}))).text(),expected);

@@ -17,8 +17,14 @@ function selectRange(header, size) {
   return {start, end, partial:true};
 }
 
-async function copyPart(response, writer, skip, length) {
+async function copyPart(response, writable, skip, length, completeBody) {
   if (!response.body) throw new Error('Film segment unavailable');
+  if (completeBody) {
+    // Keep complete asset bodies on the runtime's native stream path.
+    await response.body.pipeTo(writable, {preventClose:true});
+    return;
+  }
+  const writer = writable.getWriter();
   const reader = response.body.getReader();
   try {
     while (length > 0) {
@@ -32,6 +38,7 @@ async function copyPart(response, writer, skip, length) {
   } finally {
     await reader.cancel().catch(() => {});
     reader.releaseLock();
+    writer.releaseLock();
   }
 }
 
@@ -55,8 +62,7 @@ export async function onRequest({request, env, params}) {
     if (range.partial) headers.set('Content-Range',`bytes ${range.start}-${range.end}/${film.size}`);
     if (request.method==='HEAD') return new Response(null,{status,headers});
     const stream=typeof FixedLengthStream==='function' ? new FixedLengthStream(length) : new TransformStream();
-    const writer=stream.writable.getWriter(), abort=new AbortController();
-    writer.closed.catch(() => abort.abort());
+    const abort=new AbortController();
     const pump=async () => {
       try {
         let offset=0;
@@ -68,13 +74,14 @@ export async function onRequest({request, env, params}) {
             const response=await env.ASSETS.fetch(new Request(new URL(film.parts[index],request.url),{headers:{Range:`bytes=${start}-${end}`},signal:abort.signal}));
             if (response.status!==200 && response.status!==206) throw new Error('Film segment unavailable');
             if (response.status===206 && response.headers.get('Content-Range')!==`bytes ${start}-${end}/${partSize}`) throw new Error('Invalid film segment range');
-            await copyPart(response,writer,response.status===206 ? 0 : start,last-first+1);
+            await copyPart(response,stream.writable,response.status===206 ? 0 : start,last-first+1,response.status===206 || (start===0 && end===partSize-1));
           }
           offset+=partSize;
           if (offset>range.end) break;
         }
-        await writer.close();
-      } catch (error) { abort.abort(); await writer.abort(error).catch(() => {}); }
+        const writer=stream.writable.getWriter();
+        try { await writer.close(); } finally { writer.releaseLock(); }
+      } catch (error) { abort.abort(); await stream.writable.abort(error).catch(() => {}); }
     };
     void pump();
     return new Response(stream.readable,{status,headers});
