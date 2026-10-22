@@ -8,7 +8,7 @@
       key,
       format,
       period: daytime ? 'daytime' : 'nighttime',
-      poster: daytime ? '/posters/daytime.jpg?v=approved-launch-20261022' : '/posters/night-' + format + '-glass.jpg?v=approved-launch-20261022',
+      poster: daytime ? '/posters/daytime-raised.jpg?v=sign-depth-20261022' : '/posters/night-' + format + '-glass.jpg?v=approved-launch-20261022',
       speed: !daytime && !portrait ? 0.5 : 1,
       position: daytime ? '50% 12%' : portrait ? '50% 18%' : '50% 50%'
     };
