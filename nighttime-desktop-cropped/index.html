@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-format="desktop" data-release="night-crop-preview-v1">
+<html lang="en" data-format="desktop" data-release="night-crop-preview-audio-v2">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -13,6 +13,7 @@
 <main aria-label="Desktop cropped night film">
 <video id="film" data-film="nighttime-desktop-4k-v1" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture preload="auto" aria-label="JJS cropped night film — desktop"></video>
 </main>
+<audio id="desktop-soundtrack" src="/night-desktop-ambience-v1.m4a" preload="auto" loop hidden aria-hidden="true"></audio>
 <a class="other-preview" href="/nighttime-mobile-cropped/">Mobile preview</a>
 <div class="controls">
 <button id="play" type="button" hidden>Play video</button>
@@ -21,6 +22,6 @@
 </div>
 <p class="sr-only" id="status" role="status" aria-live="polite"></p>
 <script src="/film-loader.js?v=mobile-loop-v2"></script>
-<script src="/night-crop-preview.js?v=1"></script>
+<script src="/night-crop-preview.js?v=audio-v2"></script>
 </body>
 </html>
