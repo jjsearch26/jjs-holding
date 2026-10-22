@@ -1,0 +1,17 @@
+{
+  "regions": {
+    "reflection": {
+      "before_flow_p95_max": 1.4894797801971436,
+      "after_flow_p95_max": 0.02982206456363201,
+      "reduction_percent": 97.99782011410153
+    },
+    "signs": {
+      "before_flow_p95_max": 0.11127158999443054,
+      "after_flow_p95_max": 0.0711856558918953,
+      "reduction_percent": 36.02530898007449
+    }
+  },
+  "aac_sha256": "SHA256=76702ce05135e68a59e5ca36359114a4a6737a4d15b605745f34549f11d67445",
+  "audio_bitstream_identical": true,
+  "sample_times": "2.5s intervals and last frame"
+}

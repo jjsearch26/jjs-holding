@@ -1,0 +1,33 @@
+{
+  "reflection": {
+    "before_flow_p95_max": 1.6332358121871948,
+    "after_flow_p95_max": 0.048986613750457764,
+    "reduction_percent": 97.00064048406728
+  },
+  "audio_bitstream_identical": true,
+  "aac_sha256": "SHA256=3d3c61f9e885848da2f9dec82fa32557ebd2b15288f5c7edb8d67be1bf937933",
+  "street_psnr_db_min": 40.74029911253045,
+  "street_psnr_db_samples": [
+    41.49068550489866,
+    40.93970728064139,
+    40.91695324208456,
+    40.83864181065958,
+    40.74029911253045,
+    41.557398529038416
+  ],
+  "street_frame_rate": 30,
+  "street_timing": "same source frame at every sampled time; no retiming or smoothing",
+  "sample_times": [
+    2.5,
+    5,
+    7.5,
+    10,
+    12.5,
+    15,
+    17.5,
+    20,
+    22.5,
+    25,
+    25.466
+  ]
+}

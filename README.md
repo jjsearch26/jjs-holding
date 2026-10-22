@@ -62,3 +62,8 @@ Nighttime desktop now reads exactly the approved mobile film bytes at 1×, inclu
 The approved locked-off mobile master had largely frozen street activity. The new mobile export restores frames 0–764 from the original 30 fps IMG_3807 footage into a registered road and sidewalk mask. People and vehicles retain their recorded speed, while the approved building, raised signs and framing stay outside the moving region. The loop remains 25.5 seconds. Reproduction: `tools/daytime-natural-street.py`; registration and validation are retained with the source.
 
 Both daytime audio tracks are reduced by another 6 dB, measured from −39 to approximately −45 dBFS mean. Desktop video is copied without re-encoding. Mobile retains 2160 × 3840 output and desktop 3840 × 2160; these remain enhanced exports from lower-resolution footage. Nighttime clips, local-time scheduling, launch information, inquiry forms and progressive streaming remain as approved.
+
+
+## Stable daytime glass and signage · 22 October 2026
+
+Both daytime films now hold the building’s glass and raised signs to the approved opening view, removing local warping in the reflected tower. The surrounding film and fixed camera crop remain. Mobile’s original road and sidewalk frames remain outside the corrected region and play at 30 fps. The 25.5-second loops and quieter AAC audio are retained. Desktop remains 3840 × 2160 and mobile 2160 × 3840; these are enhanced exports from a compressed 512 × 910 upload, not native camera 4K. Reproduce with `tools/daytime-stable-facade.py`.

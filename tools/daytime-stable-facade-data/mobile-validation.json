@@ -1,0 +1,69 @@
+{
+  "source_sha256": "e86ac3665cb6951ec1fedf63776bdf1ba8bba0e457c514a7b9dd5bcc5848fbbb",
+  "format": "mobile",
+  "output_sha256": "c2c6b2742fbd002dadba388b66cc2614348cbd044c9b4ca8346324e32924d12e",
+  "video": {
+    "width": 2160,
+    "height": 3840,
+    "r_frame_rate": "30/1",
+    "duration": "25.500000",
+    "nb_frames": "765"
+  },
+  "reference_frame": 0,
+  "outline": [
+    [
+      130,
+      175
+    ],
+    [
+      150,
+      140
+    ],
+    [
+      164,
+      141
+    ],
+    [
+      165,
+      133
+    ],
+    [
+      228,
+      139
+    ],
+    [
+      228,
+      132
+    ],
+    [
+      232,
+      127
+    ],
+    [
+      365,
+      141
+    ],
+    [
+      365,
+      501
+    ],
+    [
+      151,
+      506
+    ],
+    [
+      131,
+      500
+    ]
+  ],
+  "outline_scale": 4,
+  "box": [
+    506,
+    494,
+    1474,
+    2040
+  ],
+  "audio": "existing quieter AAC bitstream copied unchanged",
+  "camera": "rigid building plate; unchanged fixed crop and playback speed",
+  "outside_building": "original film retained"
+}
