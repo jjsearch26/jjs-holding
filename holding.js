@@ -206,7 +206,7 @@
     else { refresh(true); start(); }
   });
   window.addEventListener('pageshow', () => { refresh(); start(); });
-  window.addEventListener('focus', () => refresh());
+  window.addEventListener('focus', () => { refresh(); start(); });
   window.addEventListener('online', () => refresh(true));
   // Catch clock or timezone changes while a visitor leaves the page open.
   setInterval(() => { if (!document.hidden) refresh(); }, 60000);

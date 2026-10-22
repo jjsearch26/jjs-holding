@@ -1,8 +1,8 @@
 # JJS holding page
 
-Published at https://jjs-holding.pages.dev/ from the main branch. No build command; publish repository root.
+Published at https://jonathanjamessearch.com/ from the main branch on Cloudflare Pages. No build command; publish repository root. The `functions/film/[key].js` Pages Function serves byte ranges for progressive video playback. `_routes.json` limits function invocations to `/film/*`; the remaining files are static assets.
 
-The main holding page automatically selects the approved daytime films from 07:00 up to 19:00, and the approved night-time films from 19:00 until 07:00, using the visitor’s local clock. Portrait mobile screens automatically use the corresponding mobile export; other viewports use desktop. Night-time desktop retains the approved 0.5 playback speed. Both periods retain their existing branding, video quality, traffic and ambience.
+The main holding page automatically selects the approved daytime films from 07:00 up to 19:00, and the approved night-time films from 19:00 until 07:00, using the visitor’s local clock. Portrait mobile screens automatically use the corresponding mobile export; other viewports use desktop. Night-time desktop retains the approved 0.5 playback speed. Both periods retain their existing branding, camera movement, traffic and ambience.
 
 Both layouts fill the viewport without stretching. Video autoplays muted and loops; Sound on enables audio. Every video opts out of picture-in-picture, and the site-wide Permissions Policy disables that feature to suppress browser pop-out controls. Reduced-motion visitors and browsers blocking autoplay can start playback with Play video.
 
@@ -19,9 +19,11 @@ Desktop motion uses texture-based registration refinement to remove noisy roofto
 - /nighttime-desktop/
 - /nighttime-mobile/
 
-Each comparison page fixes the requested source regardless of viewport size and contains the complete image without cropping. All four autoplay muted and loop, with playback, sound and fullscreen controls. Night-time desktop keeps the approved 0.5 playback speed. The night-time videos use a restrained full-frame luminance sharpening pass. Mobile uses the original 1080 × 1918 master rather than the earlier 512 × 908 web encode. Original source files remain in the repository.
+Each comparison page fixes the requested source regardless of viewport size. All four autoplay muted and loop, with playback, sound and fullscreen controls. Night-time desktop keeps the approved 0.5 playback speed. Original source parts remain in the repository.
 
-Films are stored as exact byte parts under `media/` and reassembled into an MP4 Blob by `film-loader.js`. This preserves the complete exported video without an additional compression pass. `films.json` retains each original byte size and SHA-256; concatenate its parts in order to recover the original MP4.
+All six page routes use the enhanced 4K exports at all times: desktop is 3840 × 2160; daytime mobile is 2160 × 3840; night-time mobile is 2160 × 3836. These enhance the approved lower-resolution footage; they are not native 4K camera recordings. No adaptive quality downgrade is used. Frame rates, film durations and the approved composition are retained. The two very quiet night soundtracks are raised by 30 dB to a measured peak near −10 dBFS, preserving their original fades and avoiding clipping. Daytime audio is unchanged. Playback starts muted until a visitor chooses Sound on.
+
+Films are stored as exact byte parts under `media/`. `film-loader.js` assigns a native `/film/<key>` URL, and the Pages Function streams the requested bytes from those parts without buffering or downloading the complete file before playback. It supports HTTP byte ranges for seeking, HEAD requests and cache validators. `films.json` retains each film’s byte size, part sizes and SHA-256; concatenate its parts in order to recover the exact MP4. `tools/package-holding-film.py` remuxes each reviewed enhanced H.264 master with its approved audio, copies the video bitstream without re-encoding, creates a poster, and packages the parts. Run `node --test tests/film-stream.test.mjs` to check range and stream behavior.
 
 Daytime revision 2 uses the passing vehicles from the original landscape footage before the desktop approach leaves street level. Desktop establishes the street for five seconds and retains the original 29-second zoom. The portrait view keeps the complete rooftop branding on a fixed horizontal centre throughout its approach and uses the full-width street source so the recentered crop has continuous moving footage across its width. The renderer is `tools/render-daytime-street.py`; it uses the original uploaded footage, registered approved daytime atlas and tracking matrices in the authoring workspace. Both outputs are 1080p at 30 fps with the existing ambience.
 
@@ -35,7 +37,7 @@ Delivery uses the FormSubmit AJAX endpoint for `jonathan.mcmanus@jj-search.com`,
 
 ## Automatic day and night
 
-`holding-schedule.js` selects the film and calculates the next local 07:00 or 19:00 boundary with local calendar arithmetic, including daylight-saving changes. `holding.js` checks at that boundary, on orientation or visibility changes, and once a minute to catch clock/timezone changes. It loads the incoming video before replacing the current one and uses a restrained crossfade. Reduced-motion preferences disable the fade and automatic playback. Obsolete loads and finished video object URLs are released. Changing the film leaves the inquiry dialog and entered form values intact.
+`holding-schedule.js` selects the film and calculates the next local 07:00 or 19:00 boundary with local calendar arithmetic, including daylight-saving changes. `holding.js` checks at that boundary, on orientation or visibility changes, and once a minute to catch clock/timezone changes. It loads the incoming video’s first frame before replacing the current one and uses a restrained crossfade. Reduced-motion preferences disable the fade and automatic playback. Obsolete video sources are released. Window focus resumes requested playback. Changing the film leaves the inquiry dialog and entered form values intact.
 
 The main page always fills the screen. All four fixed comparison routes now default to full bleed too; the earlier framed examples remain available only through an explicit `?layout=framed` link. Fixed comparison routes continue to show their named film for direct review.
 

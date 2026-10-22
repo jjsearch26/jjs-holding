@@ -44,6 +44,7 @@
   try{if(video.requestFullscreen)await video.requestFullscreen();else if(video.webkitEnterFullscreen)video.webkitEnterFullscreen();}catch{}
  });
  document.addEventListener('visibilitychange',()=>{if(document.hidden)video.pause();else start();});
+ window.addEventListener('focus',start);
  reduce.addEventListener('change',()=>{requested=!reduce.matches;if(requested)start();else video.pause();sync();});
  if(reduce.matches){video.autoplay=false;video.pause();}
  play.disabled=true;sound.disabled=true;
