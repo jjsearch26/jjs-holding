@@ -87,7 +87,8 @@
     incoming.muted = true;
     incoming.defaultMuted = true;
     incoming.playsInline = true;
-    incoming.autoplay = false;
+    incoming.autoplay = requested;
+    incoming.loop = true;
     incoming.defaultPlaybackRate = scene.speed;
     incoming.playbackRate = scene.speed;
     incoming.dataset.film = scene.key;
@@ -169,6 +170,10 @@
   }
   if (previewButton) previewButton.addEventListener('click', previewTransition);
   for (const video of videos) {
+    window.jjsKeepFilmLooping(video, {
+      shouldPlay: () => video === active && requested,
+      resume: start
+    });
     video.addEventListener('playing', () => { if (video === active) sync(); });
     video.addEventListener('pause', () => { if (video === active) sync(); });
     video.addEventListener('loadedmetadata', () => {

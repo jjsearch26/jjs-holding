@@ -31,9 +31,15 @@
  }
  async function start(){
   if(document.hidden||!requested||!loaded)return;
-  try{await video.play();}catch{status.textContent='Select Play to start the video.';}
+  try{await video.play();}catch{
+   if(!video.muted){
+    video.muted=true;
+    try{await video.play();}catch{status.textContent='Select Play to start the video.';}
+   }else status.textContent='Select Play to start the video.';
+  }
   sync();
  }
+ window.jjsKeepFilmLooping(video,{shouldPlay:()=>requested&&loaded,resume:start});
  video.addEventListener('loadedmetadata',()=>{video.playbackRate=speed;start();});
  video.addEventListener('play',sync);video.addEventListener('pause',sync);
  video.addEventListener('volumechange',sync);
@@ -45,6 +51,8 @@
  });
  document.addEventListener('visibilitychange',()=>{if(document.hidden)video.pause();else start();});
  window.addEventListener('focus',start);
+ window.addEventListener('pageshow',start);
+ window.addEventListener('online',start);
  reduce.addEventListener('change',()=>{requested=!reduce.matches;if(requested)start();else video.pause();sync();});
  if(reduce.matches){video.autoplay=false;video.pause();}
  play.disabled=true;sound.disabled=true;
