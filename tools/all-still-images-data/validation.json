@@ -1,0 +1,43 @@
+{
+  "release": "all-still-images-20261022",
+  "all_variants_use_still_images": true,
+  "night_source_sha256": "4ce3bf450480c971d3c16ded5a05012fa750d27866b8a1059dba1e6e7a0ca88b",
+  "night_frame_seconds": 20,
+  "night_image_pixels": [
+    2160,
+    3836
+  ],
+  "night_mobile_crop_native_pixels": [
+    1532,
+    2722
+  ],
+  "night_mobile_crop_center_x": 1018,
+  "night_image_sha256": "917f56d70206a0d016d78d9737f0931622b741de03a76936bdbdedef18417777",
+  "night_audio_encoded_packet_sha256": "397e9fe890b377d798891941ea53f83acf84e4ed306ac2755f4dd4664bcf4700",
+  "night_audio_reencoded": false,
+  "day_images_unchanged": {
+    "daytime-desktop-still-v1.jpg": "75ce3642149115356bc5585ff6484949440f1ce9730e395a3fccb6767f1be262",
+    "daytime-mobile-still-v1.jpg": "2e4723e1524ed15e2693015cb0eff23fa4386dedd989f0f325b54fd91c250321"
+  },
+  "day_audio_sha256": "f7877aa92e6a8e970b458c95e03811fd9a777ead5d0d7d6781d7edead95a1a05",
+  "checks": {
+    "automated_tests": 29,
+    "browser_desktop_viewport": [
+      1440,
+      900
+    ],
+    "browser_mobile_viewport": [
+      390,
+      844
+    ],
+    "video_elements": 0,
+    "image_animation": "none",
+    "image_transition": "0s",
+    "initial_audio_source": null,
+    "night_mobile_bed_visible": false,
+    "night_mobile_neon_and_wordmark_visible": true,
+    "inquiry_open_and_close": "passed",
+    "optional_night_audio": "played after Sound on",
+    "main_page_day_night_image_only": "passed"
+  }
+}

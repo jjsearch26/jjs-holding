@@ -3,16 +3,16 @@
   function select(date, portrait) {
     const daytime = date.getHours() >= 7 && date.getHours() < 19;
     const format = portrait ? 'mobile' : 'desktop';
-    const key = daytime ? 'daytime-' + format + '-still-v1' : portrait ? 'nighttime-mobile-4k-v1' : 'nighttime-desktop-mobile-loop-4k-v1';
+    const period = daytime ? 'daytime' : 'nighttime';
+    const key = period + '-' + format + '-still-v1';
     return {
       key,
-      type: daytime ? 'image' : 'video',
+      type: 'image',
       format,
-      period: daytime ? 'daytime' : 'nighttime',
-      poster: daytime ? '/images/daytime-' + format + '-still-v1.jpg' : portrait ? '/posters/night-mobile-close-v1.jpg' : '/posters/night-mobile-glass.jpg?v=mobile-loop-v1',
-      speed: 1,
-      audio: daytime ? 'separate' : 'embedded',
-      audioSource: daytime ? '/daytime-quiet-still-v1.m4a' : null,
+      period,
+      poster: daytime ? '/images/daytime-' + format + '-still-v1.jpg' : '/images/nighttime-building-still-v1.jpg',
+      audio: 'separate',
+      audioSource: daytime ? '/daytime-quiet-still-v1.m4a' : '/nighttime-still-ambience-v1.m4a',
       position: daytime ? '50% 12%' : '50% 18%'
     };
   }
