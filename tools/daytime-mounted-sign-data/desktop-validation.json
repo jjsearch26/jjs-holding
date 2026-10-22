@@ -1,0 +1,15 @@
+{
+  "source_sha256": "02c4876d3cf7ca562042012d3acc90e10d3c58d5cde77539ca654e4ae4b71e3e",
+  "approved_image_sha256": "33865d568adfc4ffe915cc2e23a8d29c293a7c1cf27d247667bcc1b7ca2ca3f6",
+  "output_sha256": "ce221d7299aadde5e1c60ec1f1e64c060ac1677bfc6e9aa7ff2e35810d5867e4",
+  "video": {
+    "width": 3840,
+    "height": 2160,
+    "r_frame_rate": "30/1",
+    "duration": "25.500000",
+    "nb_frames": "765"
+  },
+  "fps": 30.0,
+  "audio": "approved quieter audio bitstream copied unchanged",
+  "camera": "approved locked-off source; fixed crop only"
+}

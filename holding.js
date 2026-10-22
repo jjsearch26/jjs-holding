@@ -23,7 +23,7 @@
   let boundaryTimer;
   let fadeTimer;
 
-  const separateAmbience = () => active?.dataset.scene === 'nighttime-desktop';
+  const separateAmbience = () => active?.dataset.audio === 'separate';
   function playAmbience() {
     if (!ambience) return;
     if (!separateAmbience() || muted || !requested || document.hidden) {
@@ -113,6 +113,7 @@
     incoming.playbackRate = scene.speed;
     incoming.dataset.film = scene.key;
     incoming.dataset.scene = scene.period + '-' + scene.format;
+    incoming.dataset.audio = scene.audio || 'embedded';
     incoming.setAttribute('aria-label', (scene.period === 'daytime' ? 'Daytime' : 'Night-time') + ' JJS rooftop launch film');
     if (!active) {
       poster.src = scene.poster;

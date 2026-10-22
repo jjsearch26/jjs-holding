@@ -48,3 +48,10 @@ The main page always fills the screen. All four fixed comparison routes now defa
 The homepage and all four comparison pages now use the approved review films. Both daytime layouts share the stabilized 2160 × 3840, 25.5-second master, with ambience reduced by a further 6 dB. The daytime desktop crops that master exactly as reviewed. Nighttime desktop remains 3840 × 2160 at half-speed with independent normal-speed ambience; mobile remains 2160 × 3836. Nighttime signs use the daytime two-pane arrangement with the original neon artwork, and the mobile bedroom foreground is completely blacked out. Desktop night framing is 30% closer, matching the mobile emphasis.
 
 The building signs have no date. “Launching January 2027” is separate, with a transparent background and compact inquiry and sound controls. Full-bleed, clock-based day/night selection, range streaming and mobile loop recovery are retained. The prior cropped comparison links now display the approved nighttime pages too.
+
+
+## Approved mounted signage and matching night loop · 22 October 2026
+
+Daytime desktop and mobile use the approved physical signage image, fitted only to the existing glass signs and contact shadows. The original stabilized footage, 25.5-second loop and approved quieter AAC audio remain unchanged. Desktop is 3840 × 2160; mobile is 2160 × 3840. The footage was supplied compressed; these are enhanced 4K outputs, not newly captured native 4K detail. Reproduce with `tools/daytime-mounted-sign.py`; the approved image and validation reports are in `tools/daytime-mounted-sign-data/`.
+
+Nighttime desktop now reads exactly the approved mobile film bytes at 1×, including embedded audio, with only a landscape object-fit crop. It has no separate camera animation, additional scale or slow-motion playback. The previous desktop film remains available under its old key for existing tabs. The separate Launching January 2027 message and inquiry form remain on every page. Production retains progressive byte-range streaming.
