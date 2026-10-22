@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="jjs-launch-page jjs-portrait-preview" lang="en" data-layout="full-bleed" data-release="daytime-stable-facades-20261022">
+<html class="jjs-launch-page jjs-portrait-preview" lang="en" data-layout="full-bleed" data-release="daytime-still-images-20261022" data-format="mobile" data-period="daytime" data-media="image" data-film="daytime-mobile-still-v1">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -207,11 +207,12 @@ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] #fullscreen{disp
 
 </style>
 <style>@media(orientation:landscape){.holding-page{left:50%;right:auto;width:56.25dvh;transform:translateX(-50%)}}</style>
+<style>html[data-media="image"] #film-poster{animation:none;transform:none;transition:none}</style>
 </head>
 <body>
 <main class="holding-page" aria-label="Jonathan James Search — launching January 2027">
-  <img class="film film-poster" id="film-poster" src="/posters/daytime-mobile-stable-facade-v1.jpg" alt="Jonathan James Search branding fitted to the glass of an Austin building">
-  <video id="film" class="film film-video" data-film="daytime-mobile-stable-facade-4k-v1" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback controlslist="nodownload noremoteplayback nofullscreen" preload="auto" poster="/posters/daytime-mobile-stable-facade-v1.jpg" aria-label="JJS daytime launch film"></video>
+  <img width="2160" height="3840" fetchpriority="high" decoding="sync" class="film film-poster" id="film-poster" src="/images/daytime-mobile-still-v1.jpg" alt="Jonathan James Search branding fitted to the glass of an Austin building">
+  <audio id="film-ambience" data-src="/daytime-quiet-still-v1.m4a" loop preload="none"></audio>
 </main>
 <section class="jjs-launch-panel" aria-labelledby="jjs-launch-title">
   <div class="jjs-launch-copy">
@@ -220,8 +221,7 @@ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] #fullscreen{disp
     <p class="jjs-launch-description">Executive search and talent advisory.</p>
   </div>
 </section>
-<div class="film-controls" aria-label="Video controls">
-  <button class="film-control" id="play" type="button" hidden>Play video</button>
+<div class="film-controls" aria-label="Sound controls">
   <button class="film-control" id="sound" type="button" aria-pressed="false" disabled>Sound on</button>
 </div>
 <p class="sr-only" id="status" role="status" aria-live="polite"></p>
@@ -229,160 +229,7 @@ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] #fullscreen{disp
 
 
 
-<p id="review-load-status" role="status" aria-live="polite" style="position:fixed;top:max(14px,env(safe-area-inset-top));right:max(14px,env(safe-area-inset-right));z-index:7;margin:0;padding:8px 11px;background:#071b2de8;color:#eee7dc;font:11px/1.3 Arial,Helvetica,sans-serif">Loading preview…</p>
-<script src="/approved-film-source.js?v=daytime-stable-facades-20261022"></script>
-<script>window.JJS_APPROVED_MEDIA="./qa-day-mobile.mp4";</script>
-<script>
-(() => {
-  const loads = new WeakMap();
-  let catalogue;
-  window.jjsKeepFilmLooping = (video, {shouldPlay, resume}) => {
-    video.loop = true;
-    let retry;
-    let lastTime = video.currentTime;
-    let lastProgress = performance.now();
-    const atEnd = () => Number.isFinite(video.duration) && video.duration > 0 &&
-      video.currentTime >= video.duration - 0.25;
-    function recover() {
-      clearTimeout(retry);
-      if (document.hidden || !shouldPlay() || !video.currentSrc || video.error) return;
-      const stalledAtEnd = atEnd() && performance.now() - lastProgress >= 2000;
-      if (video.ended || (video.paused && atEnd()) || stalledAtEnd) {
-        // Some mobile browsers stop at the last frame despite the loop flag.
-        try { video.currentTime = 0; } catch { return; }
-        lastTime = 0;
-        lastProgress = performance.now();
-        void resume();
-      } else if (video.paused) {
-        void resume();
-      }
-    }
-    const schedule = () => {
-      clearTimeout(retry);
-      // Allow a deliberate pause, source switch or background event to settle.
-      retry = setTimeout(recover, 50);
-    };
-    for (const event of ['ended', 'pause', 'canplay', 'seeked']) video.addEventListener(event, schedule);
-    video.addEventListener('timeupdate', () => {
-      if (video.currentTime !== lastTime) {
-        lastTime = video.currentTime;
-        lastProgress = performance.now();
-      }
-    });
-    // Also cover a frozen final frame when the browser omits the ended event.
-    setInterval(() => { if (atEnd()) recover(); }, 1000);
-  };
-  window.jjsReleaseFilm = video => {
-    loads.delete(video);
-    video.pause();
-    video.removeAttribute('src');
-    video.load();
-  };
-  window.jjsLoadFilm = async (video, key) => {
-    const state = {};
-    loads.set(video, state);
-    video.pause();
-    catalogue ??= fetch('/films.json?v=daytime-stable-facades-20261022').then(response => {
-      if (!response.ok) throw new Error('Film list unavailable');
-      return response.json();
-    }).catch(error => { catalogue = null; throw error; });
-    const films = await catalogue;
-    if (!Object.hasOwn(films, key)) throw new Error('Film unavailable');
-    if (loads.get(video) !== state) return false;
-    // Native byte-range playback starts with the first frames at full quality.
-    video.src = '/film/' + encodeURIComponent(key) + '?v=' + films[key].sha256.slice(0, 12);
-    video.load();
-    return true;
-  };
-})();
-
-</script>
-<script>
-(() => {
-  'use strict';
-  const video = document.getElementById('film');
-  const playButton = document.getElementById('play');
-  const soundButton = document.getElementById('sound');
-  const status = document.getElementById('status');
-  const motion = matchMedia('(prefers-reduced-motion: reduce)');
-  let wantsPlayback = !motion.matches;
-  let loading = true;
-  let playing = false;
-
-  function format() {
-    document.documentElement.dataset.format = 'mobile';
-  }
-  format();
-  addEventListener('resize', format, {passive: true});
-
-  async function resume() {
-    if (loading || !wantsPlayback || document.hidden) return;
-    try {
-      await video.play();
-      playButton.hidden = true;
-    } catch {
-      playButton.hidden = false;
-      status.textContent = 'Select Play video to start the film. Jonathan James Search launches in January 2027.';
-    }
-  }
-  video.addEventListener('loadeddata', () => {
-    video.classList.add('is-visible');
-    soundButton.disabled = false;
-  });
-  video.addEventListener('playing', () => {
-    playing = true;
-    playButton.hidden = true;
-    soundButton.disabled = false;
-  });
-  video.addEventListener('error', () => {
-    status.textContent = 'The launch film is unavailable. Jonathan James Search launches in January 2027; use Start a conversation to contact us.';
-    soundButton.disabled = true;
-    playButton.hidden = true;
-  });
-  playButton.addEventListener('click', async () => {
-    wantsPlayback = true;
-    await resume();
-  });
-  soundButton.addEventListener('click', async () => {
-    video.muted = !video.muted;
-    soundButton.setAttribute('aria-pressed', String(!video.muted));
-    soundButton.textContent = video.muted ? 'Sound on' : 'Sound off';
-    wantsPlayback = true;
-    await resume();
-  });
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) video.pause();
-    else void resume();
-  });
-  addEventListener('focus', () => void resume());
-  motion.addEventListener('change', event => {
-    wantsPlayback = !event.matches;
-    if (event.matches) {
-      video.pause();
-      playButton.hidden = false;
-    } else void resume();
-  });
-  window.jjsKeepFilmLooping(video, {shouldPlay: () => wantsPlayback && !loading, resume});
-
-  async function load() {
-    try {
-      if (window.JJS_APPROVED_MEDIA) {
-        video.src = await window.jjsApprovedFilm(window.JJS_APPROVED_MEDIA);
-        video.load();
-      } else await window.jjsLoadFilm(video, video.dataset.film);
-      loading = false;
-      if (wantsPlayback) await resume();
-      else playButton.hidden = false;
-    } catch {
-      loading = false;
-      status.textContent = 'The launch film is unavailable. Jonathan James Search launches in January 2027.';
-      soundButton.disabled = true;
-    }
-  }
-  void load();
-})();
-
-</script>
+<script src="/daytime-still.js?v=daytime-still-images-20261022"></script>
 <script>
 (() => {
   'use strict';

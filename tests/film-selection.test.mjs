@@ -21,14 +21,17 @@ test('night desktop preserves the approved mobile film, loop speed and audio', (
   assert.equal(desktop.position, mobile.position);
 });
 
-test('daytime selects the approved mounted signs at desktop and portrait 4K sizes', () => {
+test('daytime selects fixed images and the shared quieter audio', () => {
   const day = new Date(2026, 9, 22, 12);
   const desktop = schedule.select(day, false);
   const mobile = schedule.select(day, true);
-  assert.deepEqual([films[desktop.key].width, films[desktop.key].height], [3840, 2160]);
-  assert.deepEqual([films[mobile.key].width, films[mobile.key].height], [2160, 3840]);
-  assert.equal(films[desktop.key].sha256, 'af5823310ca9c435206f952c5c61149e6717665edf1344c9bbd21c547493766f');
-  assert.equal(films[mobile.key].sha256, 'c2c6b2742fbd002dadba388b66cc2614348cbd044c9b4ca8346324e32924d12e');
+  assert.equal(desktop.type, 'image');
+  assert.equal(mobile.type, 'image');
+  assert.equal(desktop.poster, '/images/daytime-desktop-still-v1.jpg');
+  assert.equal(mobile.poster, '/images/daytime-mobile-still-v1.jpg');
+  assert.equal(desktop.audio, 'separate');
+  assert.equal(desktop.audioSource, '/daytime-quiet-still-v1.m4a');
+  assert.equal(desktop.audioSource, mobile.audioSource);
 });
 
 test('clock selection retains the 7am and 7pm boundaries', () => {

@@ -67,3 +67,8 @@ Both daytime audio tracks are reduced by another 6 dB, measured from −39 to ap
 ## Stable daytime glass and signage · 22 October 2026
 
 Both daytime films now hold the building’s glass and raised signs to the approved opening view, removing local warping in the reflected tower. The surrounding film and fixed camera crop remain. Mobile’s original road and sidewalk frames remain outside the corrected region and play at 30 fps. The 25.5-second loops and quieter AAC audio are retained. Desktop remains 3840 × 2160 and mobile 2160 × 3840; these are enhanced exports from a compressed 512 × 910 upload, not native camera 4K. Reproduce with `tools/daytime-stable-facade.py`.
+
+
+## Daytime still images · 22 October 2026
+
+Daytime now displays a single JPEG image in both layouts: 3840 × 2160 desktop and 2160 × 3840 mobile. These are the approved pre-encode image plates, copied without resizing or new image processing. They have no animation, zoom, video background, or moving traffic. The automatic page loads no daytime video. The existing quieter AAC is copied into a separate audio file and loads only after Sound on. January 2027 launch information and inquiry forms remain. Nighttime retains the approved video and embedded audio, selected at the same local 07:00/19:00 boundaries. These stills retain the available enhanced detail from the compressed source.

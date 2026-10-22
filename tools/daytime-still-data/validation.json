@@ -1,0 +1,33 @@
+{
+  "release": "daytime-still-images-20261022",
+  "image_treatment": "approved pre-encode still images copied byte-for-byte; no resizing, animation or video background",
+  "images": {
+    "desktop": {
+      "path": "/images/daytime-desktop-still-v1.jpg",
+      "width": 3840,
+      "height": 2160,
+      "sha256": "75ce3642149115356bc5585ff6484949440f1ce9730e395a3fccb6767f1be262"
+    },
+    "mobile": {
+      "path": "/images/daytime-mobile-still-v1.jpg",
+      "width": 2160,
+      "height": 3840,
+      "sha256": "2e4723e1524ed15e2693015cb0eff23fa4386dedd989f0f325b54fd91c250321"
+    }
+  },
+  "audio": {
+    "bitstream_identical": true,
+    "sha256": "SHA256=76702ce05135e68a59e5ca36359114a4a6737a4d15b605745f34549f11d67445",
+    "size": 468484,
+    "loading": "after Sound on only"
+  },
+  "verification": {
+    "tests_passed": 26,
+    "fixed_routes_video_elements": 0,
+    "automatic_daytime_video_sources": 0,
+    "animation": "none",
+    "image_dimensions_verified_in_browser": true,
+    "quiet_audio_control": "plays and pauses successfully",
+    "mobile_inquiry": "opens and closes successfully"
+  }
+}

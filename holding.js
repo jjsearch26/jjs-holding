@@ -24,12 +24,15 @@
   let fadeTimer;
 
   const separateAmbience = () => active?.dataset.audio === 'separate';
+  const stillImage = () => active === poster;
   function playAmbience() {
     if (!ambience) return;
     if (!separateAmbience() || muted || !requested || document.hidden) {
       ambience.pause();
       return;
     }
+    const source = active?.dataset.audioSource;
+    if (source && ambience.getAttribute('src') !== source) ambience.src = source;
     ambience.muted = false;
     ambience.playbackRate = 1;
     void ambience.play().catch(error => {
@@ -45,10 +48,10 @@
     sound.textContent = muted ? 'Sound on' : 'Sound off';
     sound.setAttribute('aria-pressed', String(!muted));
     sound.disabled = !active;
-    play.hidden = active ? !active.paused : !failedKey;
+    play.hidden = stillImage() || (active ? !active.paused : !failedKey);
   }
   function release(video) {
-    if (!video) return;
+    if (!video || video === poster) return;
     video.classList.remove('is-visible');
     video.muted = true;
     window.jjsReleaseFilm(video);
@@ -56,6 +59,7 @@
   async function start() {
     const video = active;
     if (!video || document.hidden || !requested) return;
+    if (stillImage()) { playAmbience(); sync(); return; }
     for (const other of videos) if (other !== video) other.muted = true;
     video.muted = muted || separateAmbience();
     try {
@@ -70,6 +74,40 @@
     }
     playAmbience();
     if (video === active) sync();
+  }
+  async function selectStill(scene, token) {
+    const image = new Image();
+    image.src = scene.poster;
+    await image.decode();
+    if (token !== revision) return;
+    active = poster;
+    for (const video of videos) release(video);
+    poster.src = scene.poster;
+    poster.dataset.film = scene.key;
+    poster.dataset.scene = scene.period + '-' + scene.format;
+    poster.dataset.audio = 'separate';
+    poster.dataset.audioSource = scene.audioSource;
+    poster.style.objectPosition = scene.position;
+    poster.style.zIndex = '1';
+    poster.style.transform = 'none';
+    poster.style.animation = 'none';
+    document.documentElement.dataset.media = 'image';
+    document.documentElement.dataset.period = scene.period;
+    document.documentElement.dataset.format = scene.format;
+    document.documentElement.dataset.film = scene.key;
+    pendingKey = null;
+    status.textContent = '';
+    playAmbience();
+    sync();
+    if (previewButton) {
+      previewStatus.textContent = 'Daytime';
+      previewButton.disabled = false;
+      previewButton.textContent = 'Preview day → night';
+      if (previewAuto && !reduce.matches) {
+        previewAuto = false;
+        previewAutoTimer = setTimeout(previewTransition, 5000);
+      }
+    }
   }
   function firstFrame(video) {
     if (video.readyState >= 2) return Promise.resolve();
@@ -100,6 +138,18 @@
     if (previewButton) {
       previewButton.disabled = true;
       previewButton.textContent = scene.period === 'daytime' ? 'Loading daytime…' : 'Loading night-time…';
+    }
+    if (scene.type === 'image') {
+      try { await selectStill(scene, token); }
+      catch {
+        if (token !== revision) return;
+        pendingKey = null;
+        failedKey = scene.key;
+        status.textContent = 'The launch image could not load. Please refresh to try again.';
+        sync();
+        if (previewButton) previewButton.disabled = false;
+      }
+      return;
     }
     const incoming = videos.find(video => video !== active);
     incoming.poster = scene.poster;
@@ -134,10 +184,11 @@
       const outgoing = active;
       active = incoming;
       pendingKey = null;
-      poster.src = scene.poster;
+      if (outgoing !== poster) poster.src = scene.poster;
       poster.dataset.scene = incoming.dataset.scene;
       poster.style.objectPosition = scene.position;
       document.documentElement.dataset.period = scene.period;
+      document.documentElement.dataset.media = 'video';
       document.documentElement.dataset.format = scene.format;
       document.documentElement.dataset.film = scene.key;
       incoming.style.zIndex = '2';
@@ -148,6 +199,7 @@
       const finish = () => {
         if (active !== incoming) return;
         release(outgoing);
+        if (outgoing === poster) poster.src = scene.poster;
         incoming.muted = muted || separateAmbience();
         playAmbience();
         if (requested) start();
