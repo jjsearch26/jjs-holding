@@ -59,20 +59,11 @@
   requestAnimationFrame(animate);
   for (const event of ['seeking','seeked','timeupdate']) video.addEventListener(event, paint);
 
-  function alignSoundtrack(force = false) {
-    if (!soundtrack || !Number.isFinite(soundtrack.duration) || soundtrack.duration <= 0) return;
-    const target = (video.currentTime / speed) % soundtrack.duration;
-    const difference = Math.abs(soundtrack.currentTime - target);
-    const drift = Math.min(difference, soundtrack.duration - difference);
-    if (force || drift > 0.75) {
-      try { soundtrack.currentTime = target; } catch {}
-    }
-  }
-  function playSoundtrack(forceSync = false) {
+  function playSoundtrack() {
     if (!soundtrack || !soundRequested || !loaded || !requested || document.hidden) return;
-    alignSoundtrack(forceSync);
     soundtrack.playbackRate = 1;
-    void soundtrack.play().catch(() => {
+    void soundtrack.play().catch(error => {
+      if (error?.name === 'AbortError' || document.hidden || !soundRequested) return;
       soundRequested = false;
       soundtrack.pause();
       status.textContent = 'Select Sound on to enable audio.';
@@ -113,24 +104,15 @@
   video.addEventListener('play', sync);
   video.addEventListener('pause', () => {soundtrack?.pause(); sync();});
   video.addEventListener('waiting', () => soundtrack?.pause());
-  video.addEventListener('playing', () => playSoundtrack(true));
-  video.addEventListener('seeked', () => {
-    if (soundtrack && soundRequested && !video.paused) playSoundtrack(true);
-  });
-  video.addEventListener('timeupdate', () => {
-    if (soundtrack && soundRequested && !soundtrack.paused && !video.paused) alignSoundtrack();
-  });
+  video.addEventListener('playing', () => playSoundtrack());
   video.addEventListener('volumechange', () => {
     // Keep the half-speed embedded track silent; only the normal-speed track is audible.
     if (soundtrack && !video.muted) video.muted = true;
     sync();
   });
   if (soundtrack) {
-    soundtrack.addEventListener('loadedmetadata', () => {
-      if (soundRequested) alignSoundtrack(true);
-    });
     soundtrack.addEventListener('ended', () => {
-      if (soundRequested && !video.paused) playSoundtrack(true);
+      if (soundRequested && !video.paused) playSoundtrack();
     });
     soundtrack.addEventListener('error', () => {
       soundRequested = false;
@@ -148,7 +130,7 @@
       if (soundRequested) {
         if (soundtrack.error) soundtrack.load();
         // Start inside the click gesture so Safari can authorize sound playback.
-        playSoundtrack(true);
+        playSoundtrack();
       } else soundtrack.pause();
     } else video.muted = !video.muted;
     start();
