@@ -1,27 +1,516 @@
 <!doctype html>
-<html lang="en" data-format="desktop" data-release="night-crop-preview-audio-v3">
+<html class="jjs-launch-page" lang="en" data-layout="full-bleed" data-release="night-date-free-review-v1">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071b2d">
 <meta name="robots" content="noindex,nofollow">
-<title>JJS | Night crop · Desktop</title>
-<link rel="stylesheet" href="/night-crop-preview.css?v=1">
+<meta name="description" content="Jonathan James Search launches in January 2027. Executive search and talent advisory. Connect with JJS ahead of launch.">
+<title>Jonathan James Search | Nighttime Desktop | Launching January 2027</title>
+
+
+<style>
+:root{--jjs-contact-navy:#10263c;--jjs-contact-ivory:#faf7ef;--jjs-contact-gold:#b49861;--jjs-contact-ink:#172b3d;--jjs-contact-line:#d8d3c7}
+.jjs-contact-launcher{position:fixed;left:max(clamp(14px,3vw,48px),env(safe-area-inset-left));bottom:max(18px,env(safe-area-inset-bottom));z-index:4}
+.jjs-contact-trigger{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border:1px solid var(--jjs-contact-gold);border-radius:0;background:var(--jjs-contact-navy);color:var(--jjs-contact-ivory);font:13px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.25px;white-space:nowrap;cursor:pointer;backdrop-filter:none}
+.jjs-contact-trigger:hover{background:#18344e}
+.jjs-contact-arrow{color:#d4bd8d;font-size:19px;line-height:1}
+.jjs-inquiry{position:fixed;inset:0;width:100%;max-width:none;height:100%;height:100dvh;max-height:100%;margin:0;padding:26px;border:0;background:transparent;color:var(--jjs-contact-ink);color-scheme:light;box-sizing:border-box;overflow:hidden;font:13px/1.4 Arial,Helvetica,sans-serif}
+.jjs-inquiry[open]{display:flex;align-items:center;justify-content:center}
+.jjs-inquiry:not([open]){display:none}
+.jjs-inquiry::backdrop{background:rgba(10,28,46,.25)}
+.jjs-inquiry *{box-sizing:border-box}
+.jjs-inquiry-panel{position:relative;width:440px;max-width:100%;max-height:100%;overflow-y:auto;overscroll-behavior:contain;padding:28px 34px 25px;background:var(--jjs-contact-ivory);border:1px solid var(--jjs-contact-gold);box-shadow:0 16px 64px rgba(5,16,27,.2)}
+.jjs-inquiry-close{position:absolute;top:10px;right:10px;display:grid;place-items:center;width:40px;min-height:40px;padding:0;border:0;border-radius:0;background:transparent;color:#66717a;font:25px/1 Arial,Helvetica,sans-serif;cursor:pointer;backdrop-filter:none}
+.jjs-inquiry-close:hover{background:#10263c08}
+.jjs-inquiry-wordmark{display:inline-flex;flex-direction:column;align-items:center;margin:0 0 18px;color:var(--jjs-contact-navy)}
+.jjs-inquiry-wordmark strong{font:400 18px/1.15 Georgia,'Times New Roman',serif;letter-spacing:.1px;white-space:nowrap}
+.jjs-inquiry-wordmark span{display:flex;align-items:center;gap:9px;margin-top:6px;padding-left:3.3px;font:11px/1.2 Georgia,'Times New Roman',serif;letter-spacing:3.3px}
+.jjs-inquiry-wordmark span::before,.jjs-inquiry-wordmark span::after{content:'';width:34px;height:1px;background:var(--jjs-contact-gold)}
+.jjs-inquiry-title{margin:0 0 9px;color:var(--jjs-contact-navy);font:400 30px/1.15 Georgia,'Times New Roman',serif;letter-spacing:-.55px;white-space:normal}
+.jjs-inquiry-intro{max-width:310px;margin:0 0 20px;color:#5a6670;font:13px/1.55 Arial,Helvetica,sans-serif}
+.jjs-inquiry-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px 18px}
+.jjs-inquiry-field{display:flex;flex-direction:column;gap:7px;min-width:0;margin:0;color:var(--jjs-contact-ink);font:12px/1.35 Arial,Helvetica,sans-serif;letter-spacing:.15px}
+.jjs-inquiry-wide{grid-column:1/-1}
+.jjs-inquiry-field input,.jjs-inquiry-field textarea{display:block;width:100%;min-height:42px;padding:10px 11px;border:1px solid var(--jjs-contact-line);border-radius:0;background:#fffdf8;color:var(--jjs-contact-ink);box-shadow:none;font:14px/1.4 Arial,Helvetica,sans-serif;letter-spacing:normal}
+.jjs-inquiry-field textarea{height:72px;min-height:72px;resize:vertical}
+.jjs-inquiry-field input::placeholder,.jjs-inquiry-field textarea::placeholder{color:#7e858a;opacity:1}
+.jjs-inquiry-send{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:46px;margin-top:18px;padding:12px 17px;border:1px solid var(--jjs-contact-navy);border-radius:0;background:var(--jjs-contact-navy);color:var(--jjs-contact-ivory);font:13px/1.4 Arial,Helvetica,sans-serif;letter-spacing:.3px;cursor:pointer;backdrop-filter:none}
+.jjs-inquiry-send:hover{background:#18344e}
+.jjs-inquiry-send:disabled{opacity:.7;cursor:wait}
+.jjs-inquiry-note{margin:12px 0 0;color:#697079;font:11px/1.45 Arial,Helvetica,sans-serif}
+.jjs-inquiry-error{margin:16px 0 0;color:#963d2d;font:13px/1.5 Arial,Helvetica,sans-serif}
+.jjs-inquiry-error a{color:inherit;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.jjs-inquiry-success{padding:14px 0 7px}
+.jjs-inquiry-check{display:grid;place-items:center;width:40px;height:40px;margin-bottom:25px;border:1px solid var(--jjs-contact-gold);color:var(--jjs-contact-navy);font:21px/1 Arial,Helvetica,sans-serif}
+.jjs-inquiry-success h2{margin:0 0 14px;color:var(--jjs-contact-navy);font:400 32px/1.15 Georgia,'Times New Roman',serif}
+.jjs-inquiry-success p{margin:0;color:var(--jjs-contact-ink);font:16px/1.6 Arial,Helvetica,sans-serif}
+.jjs-inquiry-success .jjs-inquiry-send{margin-top:32px}
+.jjs-inquiry [hidden],.jjs-inquiry-honey{display:none!important}
+.jjs-inquiry :focus-visible,.jjs-contact-trigger:focus-visible{outline:2px solid var(--jjs-contact-gold);outline-offset:3px}
+html.jjs-contact-open{overflow:hidden}
+html[data-layout="full-bleed"] .layout-switch{top:max(14px,env(safe-area-inset-top));bottom:auto}
+html[data-format="mobile"] .jjs-inquiry[open]{align-items:flex-end;padding:0}
+html[data-format="mobile"] .jjs-inquiry-panel{width:min(440px,100%);max-height:calc(100dvh - 30px);padding:26px 25px max(26px,env(safe-area-inset-bottom));border:0;border-top:1px solid var(--jjs-contact-gold);border-radius:16px 16px 0 0}
+html[data-format="mobile"] .jjs-inquiry-panel::before{content:'';position:absolute;top:9px;left:calc(50% - 18px);width:36px;height:3px;border-radius:2px;background:#d2cbbb}
+html[data-format="mobile"] .jjs-inquiry-wordmark{display:none}
+html[data-format="mobile"] .jjs-inquiry-title{padding-right:18px;font-size:29px}
+html[data-format="mobile"] .jjs-inquiry-intro{margin-bottom:18px;font-size:12px}
+html[data-format="mobile"] .jjs-inquiry-fields{grid-template-columns:minmax(0,1fr);gap:10px}
+html[data-format="mobile"] .jjs-inquiry-field{gap:4px}
+html[data-format="mobile"] .jjs-inquiry-field input,html[data-format="mobile"] .jjs-inquiry-field textarea{min-height:40px;padding:8px 10px;font-size:16px}
+html[data-format="mobile"] .jjs-inquiry-field textarea{height:60px;min-height:60px}
+html[data-format="mobile"] .jjs-inquiry-send{margin-top:16px}
+html[data-format="mobile"] .jjs-inquiry-note{margin-top:11px}
+@media(orientation:landscape){
+ html[data-layout="full-bleed"][data-format="mobile"] .jjs-contact-launcher{left:calc((100vw - 56.25dvh)/2 + 12px);bottom:max(72px,calc(env(safe-area-inset-bottom) + 60px))}
+ html[data-layout="full-bleed"][data-format="mobile"] .jjs-inquiry[open]{align-items:flex-end;padding:0}
+ html[data-layout="full-bleed"][data-format="mobile"] .jjs-inquiry-panel{width:min(56.25dvh,100vw);max-height:calc(100dvh - 30px);padding:26px 25px max(26px,env(safe-area-inset-bottom));border:0;border-top:1px solid var(--jjs-contact-gold);border-radius:16px 16px 0 0}
+}
+@media(orientation:landscape) and (min-height:480px){
+ html[data-layout="full-bleed"][data-format="mobile"] .jjs-contact-launcher{bottom:max(14px,env(safe-area-inset-bottom))}
+}
+@media(max-width:800px){
+ .jjs-contact-launcher{left:max(12px,env(safe-area-inset-left));right:auto;bottom:max(12px,env(safe-area-inset-bottom))}
+ .jjs-contact-trigger{width:auto;min-height:44px;padding:0 14px;font-size:12px;letter-spacing:.2px}
+ html[data-layout="framed"] .jjs-contact-launcher{bottom:max(74px,calc(env(safe-area-inset-bottom) + 62px))}
+}
+@media(max-width:600px){
+ .jjs-inquiry{padding:0}
+ .jjs-inquiry[open]{align-items:flex-end}
+ .jjs-inquiry-panel{width:100%;max-height:calc(100dvh - max(16px,env(safe-area-inset-top)));padding:26px 25px max(26px,env(safe-area-inset-bottom));border:0;border-top:1px solid var(--jjs-contact-gold);border-radius:16px 16px 0 0;scroll-padding:24px}
+ .jjs-inquiry-panel::before{content:'';position:absolute;top:9px;left:calc(50% - 18px);width:36px;height:3px;border-radius:2px;background:#d2cbbb}
+ .jjs-inquiry-wordmark{display:none}
+ .jjs-inquiry-title{padding-right:18px;font-size:29px}
+ .jjs-inquiry-intro{margin-bottom:18px;font-size:12px}
+ .jjs-inquiry-fields{grid-template-columns:minmax(0,1fr);gap:10px}
+ .jjs-inquiry-field{gap:4px}
+ .jjs-inquiry-field input,.jjs-inquiry-field textarea{min-height:40px;padding:8px 10px;font-size:16px}
+ .jjs-inquiry-field textarea{height:60px;min-height:60px}
+ .jjs-inquiry-send{margin-top:16px}
+ .jjs-inquiry-note{margin-top:11px}
+}
+@media(max-width:360px){.jjs-inquiry-panel{padding-left:20px;padding-right:20px}.jjs-inquiry-title{font-size:27px}}
+
+:root{color-scheme:dark;--ivory:#f7f5ef;--navy:#071b2d;--gold:#b99a5e;--page-inset:clamp(20px,3.4vw,64px)}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--navy);color:var(--ivory)}
+body{font-family:Arial,Helvetica,sans-serif}
+[hidden]{display:none!important}
+.holding-page{position:fixed;inset:0;width:100%;height:100vh;height:100dvh;overflow:hidden;background:#071b2d}
+.film{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 12%}
+.film-video{opacity:0;transition:opacity .45s ease}
+.film-video.is-visible{opacity:1}
+.launch-message{position:absolute;left:max(var(--page-inset),env(safe-area-inset-left));right:var(--page-inset);bottom:max(105px,calc(env(safe-area-inset-bottom) + 88px));max-width:620px}
+.launch-rule{width:46px;height:1px;margin-bottom:20px;background:#d2b574}
+.launch-brand{margin:0 0 12px;font:12px/1.3 Arial,Helvetica,sans-serif;letter-spacing:1.8px;text-transform:uppercase;color:#f7f5ef}
+.launch-message h1{margin:0;color:var(--ivory);font:400 clamp(37px,3.3vw,56px)/1.07 Georgia,'Times New Roman',serif;letter-spacing:-.8px;text-wrap:balance}
+.launch-message h1 span{display:block}
+.launch-description{margin:17px 0 0;color:#eeeae1;font:14px/1.35 Arial,Helvetica,sans-serif}
+.film-controls{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:4;display:flex;gap:8px}
+.film-control{min-height:48px;padding:0 17px;border:1px solid #b99a5e99;border-radius:0;background:#071b2de8;color:#f7f5ef;font:12px/1.2 Arial,Helvetica,sans-serif;cursor:pointer;backdrop-filter:blur(8px)}
+.film-control:disabled{opacity:.5;cursor:default}
+.film-control:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.jjs-contact-launcher{left:max(var(--page-inset),env(safe-area-inset-left))}
+.jjs-contact-trigger{min-height:48px;padding:0 20px}
+.jjs-inquiry-close{min-height:44px;width:44px}
+.jjs-inquiry-direct{margin:12px 0 0;color:#5a6670;font:11px/1.5 Arial,Helvetica,sans-serif}
+.jjs-inquiry-direct a{color:#18344e;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.no-script-contact{position:fixed;left:var(--page-inset);bottom:16px;z-index:5;font-size:13px}
+.no-script-contact a{color:var(--ivory)}
+@media(max-width:700px){
+ :root{--page-inset:20px}
+ .film{object-position:50% 12%}
+ .launch-message{bottom:max(90px,calc(env(safe-area-inset-bottom) + 78px));max-width:400px}
+ .launch-rule{width:36px;margin-bottom:16px}
+ .launch-brand{margin-bottom:10px;font-size:10px;letter-spacing:1.5px}
+ .launch-message h1{font-size:clamp(32px,8.2vw,42px);line-height:1.08;letter-spacing:-.4px}
+ .launch-description{margin-top:13px;font-size:12px;line-height:1.4}
+ .film-controls{right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));gap:6px}
+ .film-control{min-height:44px;padding:0 12px;font-size:11px}
+ .jjs-contact-launcher{left:max(12px,env(safe-area-inset-left));bottom:max(12px,env(safe-area-inset-bottom))}
+ .jjs-contact-trigger{min-height:44px;padding:0 13px;font-size:12px}
+}
+html[data-layout="full-bleed"][data-format="mobile"] .jjs-contact-launcher{left:max(12px,env(safe-area-inset-left));bottom:max(12px,env(safe-area-inset-bottom))}
+html[data-layout="full-bleed"][data-format="mobile"] .jjs-inquiry-panel{width:min(440px,100%);max-height:calc(100dvh - max(12px,env(safe-area-inset-top)))}
+@media(max-height:520px) and (orientation:landscape){
+ .launch-message{bottom:max(77px,calc(env(safe-area-inset-bottom) + 65px))}
+ .launch-rule{margin-bottom:10px}
+ .launch-brand{margin-bottom:6px;font-size:10px}
+ .launch-message h1{font-size:30px;line-height:1.05}
+ .launch-message h1 span{display:inline}
+ .launch-description{margin-top:8px;font-size:11px}
+ .jjs-inquiry-panel{padding-top:22px;padding-bottom:20px}
+}
+@media(max-width:359px){
+ .launch-message{left:16px;right:16px}
+ .launch-message h1{font-size:31px}
+ .launch-brand{font-size:9px}
+ .film-control{padding:0 9px}
+ .jjs-contact-trigger{padding:0 11px;font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){.film-video{transition:none}}
+
+</style>
+<style>
+:root{--jjs-launch-inset:clamp(24px,3.4vw,64px)}
+.jjs-launch-panel{position:fixed;inset:auto 0 0;z-index:4;box-sizing:border-box;padding:62px max(var(--jjs-launch-inset),env(safe-area-inset-right)) max(100px,calc(env(safe-area-inset-bottom) + 82px)) max(var(--jjs-launch-inset),env(safe-area-inset-left));background:transparent;color:#f7f5ef;pointer-events:none}
+.jjs-launch-copy{max-width:620px;text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 14px rgba(0,0,0,.65)}
+.jjs-launch-copy::before{content:'';display:block;width:42px;height:1px;margin-bottom:18px;background:#d2b574}
+.jjs-launch-brand{margin:0 0 12px;font:11px/1.3 Arial,Helvetica,sans-serif;letter-spacing:1.6px;text-transform:uppercase;color:#f7f5ef}
+html .jjs-launch-panel .jjs-launch-title{display:block;position:static;width:auto;height:auto;clip:auto;overflow:visible;margin:0;padding:0;color:#f7f5ef;font:400 clamp(37px,3.3vw,56px)/1.07 Georgia,'Times New Roman',serif;letter-spacing:-.7px;white-space:normal;text-wrap:balance}
+.jjs-launch-title span{display:block}
+.jjs-launch-description{margin:16px 0 0;color:#eeeae1;font:14px/1.4 Arial,Helvetica,sans-serif}
+html.jjs-launch-page .controls,html.jjs-launch-page .film-controls,html.jjs-launch-page footer{z-index:6}
+html.jjs-launch-page[data-layout="full-bleed"] .jjs-contact-launcher{z-index:6;left:max(var(--jjs-launch-inset),env(safe-area-inset-left));bottom:max(18px,env(safe-area-inset-bottom))}
+html.jjs-launch-page .layout-switch,html.jjs-launch-page .other-preview{top:max(14px,env(safe-area-inset-top));bottom:auto;z-index:6}
+html.jjs-launch-page .controls #play{position:absolute;right:0;bottom:54px}
+html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] #fullscreen{display:none}
+@media(max-width:700px) and (orientation:portrait){
+ :root{--jjs-launch-inset:20px}
+ .jjs-launch-panel{min-height:max(258px,32dvh);padding:24px max(20px,env(safe-area-inset-right)) max(88px,calc(env(safe-area-inset-bottom) + 70px)) max(20px,env(safe-area-inset-left));border-top:0;background:transparent}
+ .jjs-launch-copy::before{width:34px;margin-bottom:15px}
+ .jjs-launch-brand{margin-bottom:9px;font-size:10px;letter-spacing:1.4px}
+ html .jjs-launch-panel .jjs-launch-title{font-size:clamp(31px,8.2vw,40px);line-height:1.08;letter-spacing:-.4px}
+ .jjs-launch-description{margin-top:12px;font-size:12px}
+ html.jjs-launch-page[data-layout="full-bleed"] .jjs-contact-launcher{left:max(20px,env(safe-area-inset-left));bottom:max(18px,env(safe-area-inset-bottom))}
+ html.jjs-launch-page .controls,html.jjs-launch-page .film-controls,html.jjs-launch-page footer{right:max(20px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom))}
+ html.jjs-launch-page .film-control,html.jjs-launch-page .controls button,html.jjs-launch-page footer button{min-height:44px;padding:0 12px;font-size:11px}
+ html.jjs-launch-page .jjs-contact-trigger{min-height:44px;padding:0 13px;font-size:12px}
+}
+@media(max-width:359px) and (orientation:portrait){
+ .jjs-launch-panel{padding-left:16px;padding-right:16px}
+ html.jjs-launch-page[data-layout="full-bleed"] .jjs-contact-launcher{left:max(16px,env(safe-area-inset-left))}
+ html.jjs-launch-page .controls,html.jjs-launch-page .film-controls,html.jjs-launch-page footer{right:max(16px,env(safe-area-inset-right))}
+ html.jjs-launch-page .jjs-contact-trigger{padding:0 10px;font-size:11px}
+}
+@media(orientation:landscape) and (max-height:520px){
+ .jjs-launch-panel{padding-top:35px;padding-bottom:max(78px,calc(env(safe-area-inset-bottom) + 66px))}
+ .jjs-launch-copy::before{margin-bottom:10px}
+ .jjs-launch-brand{margin-bottom:6px;font-size:9px}
+ html .jjs-launch-panel .jjs-launch-title{font-size:30px;line-height:1.05}
+ .jjs-launch-title span{display:inline}
+ .jjs-launch-description{margin-top:8px;font-size:11px}
+}
+@media(orientation:landscape){
+ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .jjs-launch-panel{left:50%;right:auto;width:56.25dvh;transform:translateX(-50%);min-height:32dvh;padding:22px 16px 82px;border-top:0;background:transparent}
+ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .jjs-launch-title{font-size:clamp(19px,3.8dvh,36px)}
+ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .jjs-launch-title span{display:block}
+ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .jjs-launch-brand{font-size:8px;letter-spacing:1px}
+ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .jjs-launch-description{font-size:10px}
+ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .jjs-contact-launcher{left:calc((100vw - 56.25dvh)/2 + 10px);bottom:max(14px,env(safe-area-inset-bottom))}
+ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .jjs-contact-trigger{min-height:40px;padding:0 8px;font-size:10px}
+ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .controls,html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .film-controls,html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] footer{right:calc((100vw - 56.25dvh)/2 + 10px);bottom:max(14px,env(safe-area-inset-bottom))}
+ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .controls button,html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .film-controls button,html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] footer button{min-height:40px;padding:0 8px;font-size:10px}
+}
+
+</style>
+<style>.film{object-position:50% 50%;transform:scale(1.3);transform-origin:52% 65%}</style>
 </head>
 <body>
-<h1 class="sr-only">Jonathan James Search — cropped night film, desktop preview</h1>
-<main aria-label="Desktop cropped night film">
-<video id="film" data-film="nighttime-desktop-4k-v1" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture preload="auto" aria-label="JJS cropped night film — desktop"></video>
+<main class="holding-page" aria-label="Jonathan James Search — launching January 2027">
+  <img class="film film-poster" id="film-poster" src="/posters/night-desktop-glass.jpg" alt="Jonathan James Search illuminated branding fitted to the glass of an Austin building">
+  <video id="film" class="film film-video" data-film="nighttime-desktop-matched-glass-4k-v3" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback controlslist="nodownload noremoteplayback nofullscreen" preload="auto" poster="/posters/night-desktop-glass.jpg" aria-label="JJS night-time desktop launch film"></video>
 </main>
-<audio id="desktop-soundtrack" src="/night-desktop-ambience-v1.m4a" preload="auto" loop hidden aria-hidden="true"></audio>
-<a class="other-preview" href="/nighttime-mobile-cropped/">Mobile preview</a>
-<div class="controls">
-<button id="play" type="button" hidden>Play video</button>
-<button id="sound" type="button" aria-pressed="false" disabled>Sound on</button>
-<button id="fullscreen" type="button" hidden>Full screen</button>
+<section class="jjs-launch-panel" aria-labelledby="jjs-launch-title">
+  <div class="jjs-launch-copy">
+    <p class="jjs-launch-brand">Jonathan James Search</p>
+    <h1 class="jjs-launch-title" id="jjs-launch-title">Launching <span>January 2027</span></h1>
+    <p class="jjs-launch-description">Executive search and talent advisory.</p>
+  </div>
+</section>
+<audio id="film-ambience" src="/night-desktop-ambience-v1.m4a" loop muted preload="auto" hidden aria-hidden="true"></audio>
+<div class="film-controls" aria-label="Video controls">
+  <button class="film-control" id="play" type="button" hidden>Play video</button>
+  <button class="film-control" id="sound" type="button" aria-pressed="false" disabled>Sound on</button>
 </div>
 <p class="sr-only" id="status" role="status" aria-live="polite"></p>
-<script src="/film-loader.js?v=mobile-loop-v2"></script>
-<script src="/night-crop-preview.js?v=audio-v3"></script>
+<noscript><p class="no-script-contact">Launching January 2027. <a href="mailto:jonathan.mcmanus@jj-search.com">Contact JJS</a></p></noscript>
+
+
+
+<p id="review-load-status" role="status" aria-live="polite" style="position:fixed;top:max(14px,env(safe-area-inset-top));right:max(14px,env(safe-area-inset-right));z-index:7;margin:0;padding:8px 11px;background:#071b2de8;color:#eee7dc;font:11px/1.3 Arial,Helvetica,sans-serif">Loading film…</p>
+<script src="/approved-film-source.js?v=approved-launch-20261022"></script>
+<script>window.JJS_APPROVED_MEDIA="./qa-night-desktop.mp4";</script>
+<script>
+(() => {
+  const loads = new WeakMap();
+  let catalogue;
+  window.jjsKeepFilmLooping = (video, {shouldPlay, resume}) => {
+    video.loop = true;
+    let retry;
+    let lastTime = video.currentTime;
+    let lastProgress = performance.now();
+    const atEnd = () => Number.isFinite(video.duration) && video.duration > 0 &&
+      video.currentTime >= video.duration - 0.25;
+    function recover() {
+      clearTimeout(retry);
+      if (document.hidden || !shouldPlay() || !video.currentSrc || video.error) return;
+      const stalledAtEnd = atEnd() && performance.now() - lastProgress >= 2000;
+      if (video.ended || (video.paused && atEnd()) || stalledAtEnd) {
+        // Some mobile browsers stop at the last frame despite the loop flag.
+        try { video.currentTime = 0; } catch { return; }
+        lastTime = 0;
+        lastProgress = performance.now();
+        void resume();
+      } else if (video.paused) {
+        void resume();
+      }
+    }
+    const schedule = () => {
+      clearTimeout(retry);
+      // Allow a deliberate pause, source switch or background event to settle.
+      retry = setTimeout(recover, 50);
+    };
+    for (const event of ['ended', 'pause', 'canplay', 'seeked']) video.addEventListener(event, schedule);
+    video.addEventListener('timeupdate', () => {
+      if (video.currentTime !== lastTime) {
+        lastTime = video.currentTime;
+        lastProgress = performance.now();
+      }
+    });
+    // Also cover a frozen final frame when the browser omits the ended event.
+    setInterval(() => { if (atEnd()) recover(); }, 1000);
+  };
+  window.jjsReleaseFilm = video => {
+    loads.delete(video);
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+  };
+  window.jjsLoadFilm = async (video, key) => {
+    const state = {};
+    loads.set(video, state);
+    video.pause();
+    catalogue ??= fetch('/films.json?v=4k-v1').then(response => {
+      if (!response.ok) throw new Error('Film list unavailable');
+      return response.json();
+    }).catch(error => { catalogue = null; throw error; });
+    const films = await catalogue;
+    if (!Object.hasOwn(films, key)) throw new Error('Film unavailable');
+    if (loads.get(video) !== state) return false;
+    // Native byte-range playback starts with the first frames at full quality.
+    video.src = '/film/' + encodeURIComponent(key) + '?v=' + films[key].sha256.slice(0, 12);
+    video.load();
+    return true;
+  };
+})();
+
+</script>
+<script>
+(() => {
+  'use strict';
+  const video=document.getElementById('film');
+  const ambient=document.getElementById('film-ambience');
+  const audio=ambient||video;
+  const playButton=document.getElementById('play');
+  const soundButton=document.getElementById('sound');
+  const status=document.getElementById('status');
+  const motion=matchMedia('(prefers-reduced-motion: reduce)');
+  const speed=.5;
+  let wantsPlayback=!motion.matches;
+  let wantsSound=false;
+  let loading=true;
+  document.documentElement.dataset.format='desktop';
+  video.muted=true;
+  video.defaultMuted=true;
+  video.defaultPlaybackRate=speed;
+  video.playbackRate=speed;
+  if(ambient){ambient.loop=true;ambient.playbackRate=1;ambient.muted=true;}
+  function sync(){
+    soundButton.setAttribute('aria-pressed',String(wantsSound));
+    soundButton.textContent=wantsSound?'Sound off':'Sound on';
+    soundButton.disabled=loading;
+  }
+  function playAmbience(){
+    if(!ambient||!wantsSound||!wantsPlayback||loading||document.hidden)return;
+    ambient.muted=false;ambient.playbackRate=1;
+    void ambient.play().catch(()=>{wantsSound=false;ambient.pause();sync();status.textContent='Select Sound on to enable audio.';});
+  }
+  async function resume(){
+    if(loading||!wantsPlayback||document.hidden)return;
+    video.playbackRate=speed;
+    video.muted=!!ambient||!wantsSound;
+    try{
+      await video.play();playButton.hidden=true;playAmbience();
+    }catch{
+      playButton.hidden=false;
+      status.textContent='Select Play video to start the film. Jonathan James Search launches in January 2027.';
+    }
+  }
+  video.addEventListener('loadeddata',()=>{video.classList.add('is-visible');loading=false;sync();if(wantsPlayback)void resume();else playButton.hidden=false;});
+  video.addEventListener('loadedmetadata',()=>{video.playbackRate=speed;});
+  video.addEventListener('playing',()=>{playButton.hidden=true;playAmbience();sync();});
+  video.addEventListener('pause',()=>{ambient?.pause();});
+  video.addEventListener('waiting',()=>{ambient?.pause();});
+  video.addEventListener('error',()=>{status.textContent='The film could not load. Jonathan James Search launches in January 2027.';soundButton.disabled=true;playButton.hidden=true;});
+  playButton.addEventListener('click',()=>{wantsPlayback=true;void resume();});
+  soundButton.addEventListener('click',()=>{
+    wantsSound=!wantsSound;wantsPlayback=true;
+    audio.muted=!wantsSound;
+    if(ambient){if(wantsSound)playAmbience();else ambient.pause();}
+    void resume();sync();
+  });
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){video.pause();ambient?.pause();}else void resume();});
+  addEventListener('focus',()=>void resume());
+  motion.addEventListener('change',event=>{wantsPlayback=!event.matches;if(wantsPlayback)void resume();else{video.pause();ambient?.pause();playButton.hidden=false;}});
+  window.jjsKeepFilmLooping(video,{shouldPlay:()=>wantsPlayback&&!loading,resume});
+  void window.jjsApprovedFilm(window.JJS_APPROVED_MEDIA).then(src=>{video.src=src;video.load();}).catch(()=>{status.textContent='The film could not load. Please reload to try again.';soundButton.disabled=true;});sync();
+})();
+
+</script>
+<script>
+(() => {
+  'use strict';
+  if (document.getElementById('jjs-inquiry')) return;
+
+  const recipient = 'jonathan.mcmanus@jj-search.com';
+  const endpoint = 'https://formsubmit.co/ajax/' + recipient;
+  const launcher = document.createElement('div');
+  launcher.className = 'jjs-contact-launcher';
+  launcher.innerHTML = '<button class="jjs-contact-trigger" type="button" aria-haspopup="dialog" aria-controls="jjs-inquiry" aria-expanded="false">Start a conversation</button>';
+
+  const dialog = document.createElement('dialog');
+  dialog.id = 'jjs-inquiry';
+  dialog.className = 'jjs-inquiry';
+  dialog.setAttribute('aria-labelledby', 'jjs-inquiry-title');
+  dialog.innerHTML = `
+    <div class="jjs-inquiry-panel">
+      <button class="jjs-inquiry-close" type="button" aria-label="Close inquiry form">×</button>
+      <div class="jjs-inquiry-wordmark" aria-label="Jonathan James Search"><strong>JONATHAN JAMES</strong><span>SEARCH</span></div>
+      <div class="jjs-inquiry-entry">
+        <h2 class="jjs-inquiry-title" id="jjs-inquiry-title">Start a conversation</h2>
+        <p class="jjs-inquiry-intro">Connect with us ahead of our January 2027 launch.</p>
+        <form method="post">
+          <div class="jjs-inquiry-fields">
+            <label class="jjs-inquiry-field" for="jjs-inquiry-name">Name<input id="jjs-inquiry-name" name="name" autocomplete="name" placeholder="Your name" maxlength="120" required></label>
+            <label class="jjs-inquiry-field" for="jjs-inquiry-email">Work email<input id="jjs-inquiry-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@company.com" maxlength="254" required></label>
+            <label class="jjs-inquiry-field jjs-inquiry-wide" for="jjs-inquiry-company">Company<input id="jjs-inquiry-company" name="company" autocomplete="organization" placeholder="Your company" maxlength="160"></label>
+            <label class="jjs-inquiry-field jjs-inquiry-wide" for="jjs-inquiry-message">How can we help?<textarea id="jjs-inquiry-message" name="message" placeholder="Tell us a little about your inquiry." maxlength="5000" required></textarea></label>
+          </div>
+          <div class="jjs-inquiry-honey" aria-hidden="true"><label>Leave this field empty<input name="_honey" autocomplete="off" tabindex="-1"></label></div>
+          <button class="jjs-inquiry-send" type="submit"><span data-send-label>Send inquiry</span><span class="jjs-contact-arrow" aria-hidden="true">→</span></button>
+          <p class="jjs-inquiry-note">Your inquiry will be treated in confidence.</p>
+          <p class="jjs-inquiry-direct">You can also <a href="mailto:${recipient}">email Jonathan directly</a>.</p>
+          <p class="jjs-inquiry-error" role="alert" hidden>We couldn’t confirm your inquiry was sent. Please try again or <a href="mailto:${recipient}">email us directly</a>.</p>
+        </form>
+      </div>
+      <div class="jjs-inquiry-success" role="status" aria-live="polite" hidden>
+        <div class="jjs-inquiry-check" aria-hidden="true">✓</div>
+        <h2 id="jjs-inquiry-success-title">Thank you.</h2>
+        <p>Your inquiry has been sent to Jonathan James Search.</p>
+        <button class="jjs-inquiry-send" type="button" data-inquiry-return>Return to JJS <span class="jjs-contact-arrow" aria-hidden="true">→</span></button>
+      </div>
+    </div>`;
+  document.body.append(launcher, dialog);
+
+  const trigger = launcher.querySelector('button');
+  const panel = dialog.querySelector('.jjs-inquiry-panel');
+  const closeButton = dialog.querySelector('.jjs-inquiry-close');
+  const form = dialog.querySelector('form');
+  const entry = dialog.querySelector('.jjs-inquiry-entry');
+  const success = dialog.querySelector('.jjs-inquiry-success');
+  const error = dialog.querySelector('.jjs-inquiry-error');
+  const submit = form.querySelector('button[type="submit"]');
+  const sendLabel = form.querySelector('[data-send-label]');
+  const returnButton = dialog.querySelector('[data-inquiry-return]');
+  let sending = false;
+  let completed = false;
+  form.action = endpoint;
+
+  function reset() {
+    form.reset();
+    entry.hidden = false;
+    success.hidden = true;
+    error.hidden = true;
+    completed = false;
+    dialog.setAttribute('aria-labelledby', 'jjs-inquiry-title');
+  }
+  function close() {
+    dialog.close();
+  }
+  trigger.addEventListener('click', () => {
+    if (completed) reset();
+    dialog.showModal();
+    document.documentElement.classList.add('jjs-contact-open');
+    trigger.setAttribute('aria-expanded', 'true');
+  });
+  closeButton.addEventListener('click', close);
+  returnButton.addEventListener('click', close);
+  dialog.addEventListener('click', event => {
+    if (event.target === dialog) close();
+  });
+  dialog.addEventListener('close', () => {
+    document.documentElement.classList.remove('jjs-contact-open');
+    trigger.setAttribute('aria-expanded', 'false');
+    trigger.focus({preventScroll: true});
+  });
+
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (sending || !form.reportValidity()) return;
+    const name = form.elements.namedItem('name').value.trim();
+    const email = form.elements.namedItem('email').value.trim();
+    const company = form.elements.namedItem('company').value.trim();
+    const message = form.elements.namedItem('message').value.trim();
+    if (!name || !email || !message) {
+      const field = !name ? 'name' : !email ? 'email' : 'message';
+      form.elements.namedItem(field).value = '';
+      form.elements.namedItem(field).reportValidity();
+      return;
+    }
+    const data = new FormData(form);
+    data.set('name', name);
+    data.set('email', email);
+    data.set('company', company);
+    data.set('message', message);
+    data.set('_replyto', email);
+    data.set('_subject', 'JJS website inquiry' + (company ? ' — ' + company.replace(/[\r\n]/g, ' ') : ''));
+    data.set('_template', 'table');
+    data.set('_url', 'https://jonathanjamessearch.com/');
+    data.set('Page', location.href);
+    data.set('Version', document.getElementById('film')?.dataset.film || 'JJS holding page');
+    data.set('Layout', document.documentElement.dataset.layout || 'full-bleed');
+
+    sending = true;
+    error.hidden = true;
+    submit.disabled = true;
+    sendLabel.textContent = 'Sending…';
+    panel.setAttribute('aria-busy', 'true');
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30000);
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: data,
+        headers: {'Accept': 'application/json'},
+        credentials: 'omit',
+        referrerPolicy: 'strict-origin-when-cross-origin',
+        signal: controller.signal
+      });
+      const result = await response.json();
+      const accepted = result.success === true || result.success === 'true';
+      const activationPending = /activat|confirm your form/i.test(String(result.message || ''));
+      if (!response.ok || !accepted || activationPending) throw new Error('Inquiry not accepted');
+      completed = true;
+      entry.hidden = true;
+      success.hidden = false;
+      dialog.setAttribute('aria-labelledby', 'jjs-inquiry-success-title');
+      panel.scrollTop = 0;
+      if (dialog.open) returnButton.focus({preventScroll: true});
+    } catch {
+      error.hidden = false;
+    } finally {
+      clearTimeout(timeout);
+      sending = false;
+      submit.disabled = false;
+      sendLabel.textContent = 'Send inquiry';
+      panel.removeAttribute('aria-busy');
+    }
+  });
+})();
+
+</script>
 </body>
 </html>

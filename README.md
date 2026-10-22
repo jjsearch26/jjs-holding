@@ -42,3 +42,9 @@ Delivery uses the FormSubmit AJAX endpoint for `jonathan.mcmanus@jj-search.com`,
 The main page always fills the screen. All four fixed comparison routes now default to full bleed too; the earlier framed examples remain available only through an explicit `?layout=framed` link. Fixed comparison routes continue to show their named film for direct review.
 
 `/transition-preview/` demonstrates the exact two-second day/night crossfade with the original moving videos. It starts in daytime, switches to night once after five seconds, and offers a replay button in either direction. Its preview override is scoped to that page; the main holding page always follows the visitor’s clock.
+
+## Approved launch release — 22 October 2026
+
+The homepage and all four comparison pages now use the approved review films. Both daytime layouts share the stabilized 2160 × 3840, 25.5-second master, with ambience reduced by a further 6 dB. The daytime desktop crops that master exactly as reviewed. Nighttime desktop remains 3840 × 2160 at half-speed with independent normal-speed ambience; mobile remains 2160 × 3836. Nighttime signs use the daytime two-pane arrangement with the original neon artwork, and the mobile bedroom foreground is completely blacked out. Desktop night framing is 30% closer, matching the mobile emphasis.
+
+The building signs have no date. “Launching January 2027” is separate, with a transparent background and compact inquiry and sound controls. Full-bleed, clock-based day/night selection, range streaming and mobile loop recovery are retained. The prior cropped comparison links now display the approved nighttime pages too.

@@ -1,0 +1,50 @@
+:root{--jjs-launch-inset:clamp(24px,3.4vw,64px)}
+.jjs-launch-panel{position:fixed;inset:auto 0 0;z-index:4;box-sizing:border-box;padding:62px max(var(--jjs-launch-inset),env(safe-area-inset-right)) max(100px,calc(env(safe-area-inset-bottom) + 82px)) max(var(--jjs-launch-inset),env(safe-area-inset-left));background:transparent;color:#f7f5ef;pointer-events:none}
+.jjs-launch-copy{max-width:620px;text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 14px rgba(0,0,0,.65)}
+.jjs-launch-copy::before{content:'';display:block;width:42px;height:1px;margin-bottom:18px;background:#d2b574}
+.jjs-launch-brand{margin:0 0 12px;font:11px/1.3 Arial,Helvetica,sans-serif;letter-spacing:1.6px;text-transform:uppercase;color:#f7f5ef}
+html .jjs-launch-panel .jjs-launch-title{display:block;position:static;width:auto;height:auto;clip:auto;overflow:visible;margin:0;padding:0;color:#f7f5ef;font:400 clamp(37px,3.3vw,56px)/1.07 Georgia,'Times New Roman',serif;letter-spacing:-.7px;white-space:normal;text-wrap:balance}
+.jjs-launch-title span{display:block}
+.jjs-launch-description{margin:16px 0 0;color:#eeeae1;font:14px/1.4 Arial,Helvetica,sans-serif}
+html.jjs-launch-page .controls,html.jjs-launch-page .film-controls,html.jjs-launch-page footer{z-index:6}
+html.jjs-launch-page[data-layout="full-bleed"] .jjs-contact-launcher{z-index:6;left:max(var(--jjs-launch-inset),env(safe-area-inset-left));bottom:max(18px,env(safe-area-inset-bottom))}
+html.jjs-launch-page .layout-switch,html.jjs-launch-page .other-preview{top:max(14px,env(safe-area-inset-top));bottom:auto;z-index:6}
+html.jjs-launch-page .controls #play{position:absolute;right:0;bottom:54px}
+html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] #fullscreen{display:none}
+@media(max-width:700px) and (orientation:portrait){
+ :root{--jjs-launch-inset:20px}
+ .jjs-launch-panel{min-height:max(258px,32dvh);padding:24px max(20px,env(safe-area-inset-right)) max(88px,calc(env(safe-area-inset-bottom) + 70px)) max(20px,env(safe-area-inset-left));border-top:0;background:transparent}
+ .jjs-launch-copy::before{width:34px;margin-bottom:15px}
+ .jjs-launch-brand{margin-bottom:9px;font-size:10px;letter-spacing:1.4px}
+ html .jjs-launch-panel .jjs-launch-title{font-size:clamp(31px,8.2vw,40px);line-height:1.08;letter-spacing:-.4px}
+ .jjs-launch-description{margin-top:12px;font-size:12px}
+ html.jjs-launch-page[data-layout="full-bleed"] .jjs-contact-launcher{left:max(20px,env(safe-area-inset-left));bottom:max(18px,env(safe-area-inset-bottom))}
+ html.jjs-launch-page .controls,html.jjs-launch-page .film-controls,html.jjs-launch-page footer{right:max(20px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom))}
+ html.jjs-launch-page .film-control,html.jjs-launch-page .controls button,html.jjs-launch-page footer button{min-height:44px;padding:0 12px;font-size:11px}
+ html.jjs-launch-page .jjs-contact-trigger{min-height:44px;padding:0 13px;font-size:12px}
+}
+@media(max-width:359px) and (orientation:portrait){
+ .jjs-launch-panel{padding-left:16px;padding-right:16px}
+ html.jjs-launch-page[data-layout="full-bleed"] .jjs-contact-launcher{left:max(16px,env(safe-area-inset-left))}
+ html.jjs-launch-page .controls,html.jjs-launch-page .film-controls,html.jjs-launch-page footer{right:max(16px,env(safe-area-inset-right))}
+ html.jjs-launch-page .jjs-contact-trigger{padding:0 10px;font-size:11px}
+}
+@media(orientation:landscape) and (max-height:520px){
+ .jjs-launch-panel{padding-top:35px;padding-bottom:max(78px,calc(env(safe-area-inset-bottom) + 66px))}
+ .jjs-launch-copy::before{margin-bottom:10px}
+ .jjs-launch-brand{margin-bottom:6px;font-size:9px}
+ html .jjs-launch-panel .jjs-launch-title{font-size:30px;line-height:1.05}
+ .jjs-launch-title span{display:inline}
+ .jjs-launch-description{margin-top:8px;font-size:11px}
+}
+@media(orientation:landscape){
+ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .jjs-launch-panel{left:50%;right:auto;width:56.25dvh;transform:translateX(-50%);min-height:32dvh;padding:22px 16px 82px;border-top:0;background:transparent}
+ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .jjs-launch-title{font-size:clamp(19px,3.8dvh,36px)}
+ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .jjs-launch-title span{display:block}
+ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .jjs-launch-brand{font-size:8px;letter-spacing:1px}
+ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .jjs-launch-description{font-size:10px}
+ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .jjs-contact-launcher{left:calc((100vw - 56.25dvh)/2 + 10px);bottom:max(14px,env(safe-area-inset-bottom))}
+ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .jjs-contact-trigger{min-height:40px;padding:0 8px;font-size:10px}
+ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .controls,html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .film-controls,html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] footer{right:calc((100vw - 56.25dvh)/2 + 10px);bottom:max(14px,env(safe-area-inset-bottom))}
+ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .controls button,html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] .film-controls button,html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] footer button{min-height:40px;padding:0 8px;font-size:10px}
+}

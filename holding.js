@@ -5,6 +5,7 @@
   const sound = document.getElementById('sound');
   const play = document.getElementById('play');
   const status = document.getElementById('status');
+  const ambience = document.getElementById('film-ambience');
   const portrait = matchMedia('(max-width:900px) and (orientation:portrait)');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const schedule = window.JJSHoldingSchedule;
@@ -22,6 +23,24 @@
   let boundaryTimer;
   let fadeTimer;
 
+  const separateAmbience = () => active?.dataset.scene === 'nighttime-desktop';
+  function playAmbience() {
+    if (!ambience) return;
+    if (!separateAmbience() || muted || !requested || document.hidden) {
+      ambience.pause();
+      return;
+    }
+    ambience.muted = false;
+    ambience.playbackRate = 1;
+    void ambience.play().catch(error => {
+      if (error?.name === 'AbortError' || document.hidden || muted || !separateAmbience()) return;
+      muted = true;
+      ambience.pause();
+      status.textContent = 'Select Sound on to enable audio.';
+      sync();
+    });
+  }
+
   function sync() {
     sound.textContent = muted ? 'Sound on' : 'Sound off';
     sound.setAttribute('aria-pressed', String(!muted));
@@ -38,7 +57,7 @@
     const video = active;
     if (!video || document.hidden || !requested) return;
     for (const other of videos) if (other !== video) other.muted = true;
-    video.muted = muted;
+    video.muted = muted || separateAmbience();
     try {
       await video.play();
     } catch {
@@ -49,6 +68,7 @@
         try { await video.play(); } catch {}
       }
     }
+    playAmbience();
     if (video === active) sync();
   }
   function firstFrame(video) {
@@ -92,9 +112,11 @@
     incoming.defaultPlaybackRate = scene.speed;
     incoming.playbackRate = scene.speed;
     incoming.dataset.film = scene.key;
+    incoming.dataset.scene = scene.period + '-' + scene.format;
     incoming.setAttribute('aria-label', (scene.period === 'daytime' ? 'Daytime' : 'Night-time') + ' JJS rooftop launch film');
     if (!active) {
       poster.src = scene.poster;
+      poster.dataset.scene = incoming.dataset.scene;
       poster.style.objectPosition = scene.position;
     }
     sync();
@@ -112,6 +134,7 @@
       active = incoming;
       pendingKey = null;
       poster.src = scene.poster;
+      poster.dataset.scene = incoming.dataset.scene;
       poster.style.objectPosition = scene.position;
       document.documentElement.dataset.period = scene.period;
       document.documentElement.dataset.format = scene.format;
@@ -124,7 +147,8 @@
       const finish = () => {
         if (active !== incoming) return;
         release(outgoing);
-        incoming.muted = muted;
+        incoming.muted = muted || separateAmbience();
+        playAmbience();
         if (requested) start();
         sync();
         if (previewButton) {
@@ -174,8 +198,9 @@
       shouldPlay: () => video === active && requested,
       resume: start
     });
-    video.addEventListener('playing', () => { if (video === active) sync(); });
-    video.addEventListener('pause', () => { if (video === active) sync(); });
+    video.addEventListener('playing', () => { if (video === active) { playAmbience(); sync(); } });
+    video.addEventListener('pause', () => { if (video === active) { ambience?.pause(); sync(); } });
+    video.addEventListener('waiting', () => { if (video === active) ambience?.pause(); });
     video.addEventListener('loadedmetadata', () => {
       const date = new Date();
       if (previewPeriod) date.setHours(previewPeriod === 'daytime' ? 12 : 21, 0, 0, 0);
@@ -196,6 +221,8 @@
   sound.addEventListener('click', () => {
     muted = !muted;
     requested = true;
+    // Authorize the independent track inside the user's sound gesture on Safari.
+    playAmbience();
     start();
     sync();
   });
@@ -203,11 +230,11 @@
   reduce.addEventListener('change', () => {
     requested = !reduce.matches;
     if (requested) start();
-    else for (const video of videos) video.pause();
+    else { for (const video of videos) video.pause(); ambience?.pause(); }
     sync();
   });
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) for (const video of videos) video.pause();
+    if (document.hidden) { for (const video of videos) video.pause(); ambience?.pause(); }
     else { refresh(true); start(); }
   });
   window.addEventListener('pageshow', () => { refresh(); start(); });

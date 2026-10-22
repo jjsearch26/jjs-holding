@@ -29,6 +29,7 @@
           <div class="jjs-inquiry-honey" aria-hidden="true"><label>Leave this field empty<input name="_honey" autocomplete="off" tabindex="-1"></label></div>
           <button class="jjs-inquiry-send" type="submit"><span data-send-label>Send inquiry</span><span class="jjs-contact-arrow" aria-hidden="true">→</span></button>
           <p class="jjs-inquiry-note">Your inquiry will be treated in confidence.</p>
+          <p class="jjs-inquiry-direct">You can also <a href="mailto:${recipient}">email Jonathan directly</a>.</p>
           <p class="jjs-inquiry-error" role="alert" hidden>We couldn’t confirm your inquiry was sent. Please try again or <a href="mailto:${recipient}">email us directly</a>.</p>
         </form>
       </div>
@@ -104,7 +105,7 @@
     data.set('_replyto', email);
     data.set('_subject', 'JJS website inquiry' + (company ? ' — ' + company.replace(/[\r\n]/g, ' ') : ''));
     data.set('_template', 'table');
-    data.set('_url', location.origin + '/');
+    data.set('_url', 'https://jonathanjamessearch.com/');
     data.set('Page', location.href);
     data.set('Version', document.getElementById('film')?.dataset.film || 'JJS holding page');
     data.set('Layout', document.documentElement.dataset.layout || 'full-bleed');

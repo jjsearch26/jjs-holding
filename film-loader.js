@@ -47,7 +47,7 @@
     const state = {};
     loads.set(video, state);
     video.pause();
-    catalogue ??= fetch('/films.json?v=4k-v1').then(response => {
+    catalogue ??= fetch('/films.json?v=approved-launch-20261022',{cache:'no-store'}).then(response => {
       if (!response.ok) throw new Error('Film list unavailable');
       return response.json();
     }).catch(error => { catalogue = null; throw error; });

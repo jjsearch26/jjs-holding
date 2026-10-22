@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="en" data-layout="full-bleed">
+<html class="jjs-launch-page" lang="en" data-layout="full-bleed">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071b2d">
 <meta name="robots" content="noindex,nofollow">
 <meta name="description" content="Jonathan James Search. January 2027.">
-<meta name="jjs-release" content="mobile-loop-v2">
+<meta name="jjs-release" content="approved-launch-20261022">
 <title>Jonathan James Search | January 2027</title>
 <style>
-:root{color-scheme:dark;--ivory:#eee7dc;--navy:#071b2d}
+:root{color-scheme:dark;--ivory:#f7f5ef;--navy:#071b2d}
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--navy);color:var(--ivory)}
 body{font-family:Arial,Helvetica,sans-serif}
@@ -21,31 +21,41 @@ video.film{opacity:0;transition:opacity 2s ease-in-out}
 video.film.is-visible{opacity:1}
 @media(prefers-reduced-motion:reduce){video.film{transition:none}}
 .controls{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:2;display:flex;gap:8px}
-button{min-height:44px;padding:10px 15px;border:1px solid #eee7dc66;background:#071b2dcc;color:var(--ivory);border-radius:2px;font:12px Arial,Helvetica,sans-serif;letter-spacing:.04em;cursor:pointer;backdrop-filter:blur(8px)}
+button{min-height:48px;padding:0 17px;border:1px solid #b99a5e99;background:#071b2de8;color:var(--ivory);border-radius:0;font:12px/1.2 Arial,Helvetica,sans-serif;cursor:pointer;backdrop-filter:blur(8px)}
 button:focus-visible{outline:2px solid var(--ivory);outline-offset:4px}
 [hidden]{display:none!important}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(orientation:portrait){.film{object-fit:cover;object-position:50% 18%}.controls{right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom))}}
 
+.film[data-scene="nighttime-desktop"]{transform:scale(1.3);transform-origin:52% 65%}
 </style>
-<link rel="stylesheet" href="/contact.css?v=contact-v3">
+<link rel="stylesheet" href="/contact.css?v=approved-launch-20261022">
+<link rel="stylesheet" href="/launch-message.css?v=approved-launch-20261022">
 </head>
 <body>
 <main aria-label="Jonathan James Search launch film">
 <h1 class="sr-only">Jonathan James Search — January 2027</h1>
 <img class="film" id="film-poster" alt="JJS rooftop branding above the Austin skyline, January 2027">
-<noscript><picture><source media="(max-width:900px) and (orientation:portrait)" srcset="/nighttime-mobile-4k-v1.jpg"><img class="film" src="/nighttime-desktop-4k-v1.jpg" alt="Jonathan James Search, launching January 2027"></picture></noscript>
+<noscript><picture><source media="(max-width:900px) and (orientation:portrait)" srcset="/posters/night-mobile-glass.jpg"><img class="film" src="/posters/night-desktop-glass.jpg" alt="Jonathan James Search, launching January 2027"></picture></noscript>
 <video disablepictureinpicture class="film" id="launch-video" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="JJS rooftop launch film"></video>
 <video disablepictureinpicture class="film" id="launch-video-next" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="JJS rooftop launch film"></video>
 </main>
+<audio id="film-ambience" src="/night-desktop-ambience-v1.m4a" preload="auto" loop></audio>
+<section class="jjs-launch-panel" aria-labelledby="jjs-launch-title">
+  <div class="jjs-launch-copy">
+    <p class="jjs-launch-brand">Jonathan James Search</p>
+    <h1 class="jjs-launch-title" id="jjs-launch-title">Launching <span>January 2027</span></h1>
+    <p class="jjs-launch-description">Executive search and talent advisory.</p>
+  </div>
+</section>
 <div class="controls">
 <button id="play" type="button" hidden>Play video</button>
 <button id="sound" type="button" aria-pressed="false">Sound on</button>
 </div>
 <p class="sr-only" id="status" role="status" aria-live="polite"></p>
-<script src="/film-loader.js?v=mobile-loop-v2"></script>
-<script src="/holding-schedule.js?v=4k-v1"></script>
-<script src="/holding.js?v=mobile-loop-v2"></script>
-<script src="/contact.js?v=contact-v3"></script>
+<script src="/film-loader.js?v=approved-launch-20261022"></script>
+<script src="/holding-schedule.js?v=approved-launch-20261022"></script>
+<script src="/holding.js?v=approved-launch-20261022"></script>
+<script src="/contact.js?v=approved-launch-20261022"></script>
 </body>
 </html>
