@@ -6,7 +6,7 @@
   const endpoint = 'https://formsubmit.co/ajax/' + recipient;
   const launcher = document.createElement('div');
   launcher.className = 'jjs-contact-launcher';
-  launcher.innerHTML = '<button class="jjs-contact-trigger" type="button" aria-haspopup="dialog" aria-controls="jjs-inquiry" aria-expanded="false">Start a conversation <span class="jjs-contact-arrow" aria-hidden="true">↗</span></button>';
+  launcher.innerHTML = '<button class="jjs-contact-trigger" type="button" aria-haspopup="dialog" aria-controls="jjs-inquiry" aria-expanded="false">Start a conversation</button>';
 
   const dialog = document.createElement('dialog');
   dialog.id = 'jjs-inquiry';

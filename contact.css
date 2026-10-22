@@ -1,6 +1,6 @@
 :root{--jjs-contact-navy:#10263c;--jjs-contact-ivory:#faf7ef;--jjs-contact-gold:#b49861;--jjs-contact-ink:#172b3d;--jjs-contact-line:#d8d3c7}
 .jjs-contact-launcher{position:fixed;left:max(clamp(14px,3vw,48px),env(safe-area-inset-left));bottom:max(18px,env(safe-area-inset-bottom));z-index:4}
-.jjs-contact-trigger{display:flex;align-items:center;justify-content:space-between;gap:28px;min-height:48px;padding:0 20px;border:1px solid var(--jjs-contact-gold);border-radius:0;background:var(--jjs-contact-navy);color:var(--jjs-contact-ivory);font:13px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.25px;cursor:pointer;backdrop-filter:none}
+.jjs-contact-trigger{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border:1px solid var(--jjs-contact-gold);border-radius:0;background:var(--jjs-contact-navy);color:var(--jjs-contact-ivory);font:13px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.25px;white-space:nowrap;cursor:pointer;backdrop-filter:none}
 .jjs-contact-trigger:hover{background:#18344e}
 .jjs-contact-arrow{color:#d4bd8d;font-size:19px;line-height:1}
 .jjs-inquiry{position:fixed;inset:0;width:100%;max-width:none;height:100%;height:100dvh;max-height:100%;margin:0;padding:26px;border:0;background:transparent;color:var(--jjs-contact-ink);color-scheme:light;box-sizing:border-box;overflow:hidden;font:13px/1.4 Arial,Helvetica,sans-serif}
@@ -51,17 +51,19 @@ html[data-format="mobile"] .jjs-inquiry-field textarea{height:60px;min-height:60
 html[data-format="mobile"] .jjs-inquiry-send{margin-top:16px}
 html[data-format="mobile"] .jjs-inquiry-note{margin-top:11px}
 @media(orientation:landscape){
- html[data-layout="full-bleed"][data-format="mobile"] .jjs-contact-launcher{left:calc((100vw - 56.25dvh)/2 + 12px);bottom:max(72px,calc(env(safe-area-inset-bottom) + 60px));width:calc(56.25dvh - 24px)}
- html[data-layout="full-bleed"][data-format="mobile"] .jjs-contact-trigger{width:100%}
+ html[data-layout="full-bleed"][data-format="mobile"] .jjs-contact-launcher{left:calc((100vw - 56.25dvh)/2 + 12px);bottom:max(72px,calc(env(safe-area-inset-bottom) + 60px))}
  html[data-layout="full-bleed"][data-format="mobile"] .jjs-inquiry[open]{align-items:flex-end;padding:0}
  html[data-layout="full-bleed"][data-format="mobile"] .jjs-inquiry-panel{width:min(56.25dvh,100vw);max-height:calc(100dvh - 30px);padding:26px 25px max(26px,env(safe-area-inset-bottom));border:0;border-top:1px solid var(--jjs-contact-gold);border-radius:16px 16px 0 0}
 }
+@media(orientation:landscape) and (min-height:480px){
+ html[data-layout="full-bleed"][data-format="mobile"] .jjs-contact-launcher{bottom:max(14px,env(safe-area-inset-bottom))}
+}
 @media(max-width:800px){
- .jjs-contact-launcher{bottom:max(74px,calc(env(safe-area-inset-bottom) + 62px))}
+ .jjs-contact-launcher{left:max(12px,env(safe-area-inset-left));right:auto;bottom:max(12px,env(safe-area-inset-bottom))}
+ .jjs-contact-trigger{width:auto;min-height:44px;padding:0 14px;font-size:12px;letter-spacing:.2px}
+ html[data-layout="framed"] .jjs-contact-launcher{bottom:max(74px,calc(env(safe-area-inset-bottom) + 62px))}
 }
 @media(max-width:600px){
- .jjs-contact-launcher{left:max(14px,env(safe-area-inset-left));right:max(14px,env(safe-area-inset-right))}
- .jjs-contact-trigger{width:100%;gap:20px}
  .jjs-inquiry{padding:0}
  .jjs-inquiry[open]{align-items:flex-end}
  .jjs-inquiry-panel{width:100%;max-height:calc(100dvh - max(16px,env(safe-area-inset-top)));padding:26px 25px max(26px,env(safe-area-inset-bottom));border:0;border-top:1px solid var(--jjs-contact-gold);border-radius:16px 16px 0 0;scroll-padding:24px}
