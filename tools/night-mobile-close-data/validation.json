@@ -1,0 +1,32 @@
+{
+  "release": "night-mobile-close-20261022",
+  "approved_framing_commit": "9cc2a80411589ab58f9c15748fec6f0dafc79b90",
+  "crop_native_pixels": [
+    1532,
+    2722
+  ],
+  "original_mobile_master_pixels": [
+    2160,
+    3836
+  ],
+  "source_video_sha256": "4ce3bf450480c971d3c16ded5a05012fa750d27866b8a1059dba1e6e7a0ca88b",
+  "video_reencoded": false,
+  "audio_changed": false,
+  "night_desktop_changed": false,
+  "checks": {
+    "automated_tests": "28 passed",
+    "browser_viewport": [
+      390,
+      844
+    ],
+    "branding_visible": true,
+    "bed_hidden": true,
+    "launch_info_visible": true,
+    "inquiry_open_and_close": true,
+    "main_page_night_scene": "same framing; native source and speed1 verified"
+  },
+  "daytime_image_sha256": {
+    "daytime-desktop-still-v1.jpg": "75ce3642149115356bc5585ff6484949440f1ce9730e395a3fccb6767f1be262",
+    "daytime-mobile-still-v1.jpg": "2e4723e1524ed15e2693015cb0eff23fa4386dedd989f0f325b54fd91c250321"
+  }
+}

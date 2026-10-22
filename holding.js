@@ -193,6 +193,7 @@
       document.documentElement.dataset.film = scene.key;
       incoming.style.zIndex = '2';
       if (outgoing) outgoing.style.zIndex = '1';
+      window.jjsApplyNightMobileCrop?.(incoming);
       incoming.classList.add('is-visible');
       status.textContent = '';
       if (previewStatus) previewStatus.textContent = outgoing ? 'Fading to ' + (scene.period === 'daytime' ? 'daytime' : 'night-time') : 'Daytime';

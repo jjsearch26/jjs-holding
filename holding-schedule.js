@@ -9,7 +9,7 @@
       type: daytime ? 'image' : 'video',
       format,
       period: daytime ? 'daytime' : 'nighttime',
-      poster: daytime ? '/images/daytime-' + format + '-still-v1.jpg' : '/posters/night-mobile-glass.jpg?v=mobile-loop-v1',
+      poster: daytime ? '/images/daytime-' + format + '-still-v1.jpg' : portrait ? '/posters/night-mobile-close-v1.jpg' : '/posters/night-mobile-glass.jpg?v=mobile-loop-v1',
       speed: 1,
       audio: daytime ? 'separate' : 'embedded',
       audioSource: daytime ? '/daytime-quiet-still-v1.m4a' : null,
