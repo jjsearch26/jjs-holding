@@ -55,3 +55,10 @@ The building signs have no date. “Launching January 2027” is separate, with 
 Daytime desktop and mobile use the approved physical signage image, fitted only to the existing glass signs and contact shadows. The original stabilized footage, 25.5-second loop and approved quieter AAC audio remain unchanged. Desktop is 3840 × 2160; mobile is 2160 × 3840. The footage was supplied compressed; these are enhanced 4K outputs, not newly captured native 4K detail. Reproduce with `tools/daytime-mounted-sign.py`; the approved image and validation reports are in `tools/daytime-mounted-sign-data/`.
 
 Nighttime desktop now reads exactly the approved mobile film bytes at 1×, including embedded audio, with only a landscape object-fit crop. It has no separate camera animation, additional scale or slow-motion playback. The previous desktop film remains available under its old key for existing tabs. The separate Launching January 2027 message and inquiry form remain on every page. Production retains progressive byte-range streaming.
+
+
+## Natural mobile street motion and softer daytime sound · 22 October 2026
+
+The approved locked-off mobile master had largely frozen street activity. The new mobile export restores frames 0–764 from the original 30 fps IMG_3807 footage into a registered road and sidewalk mask. People and vehicles retain their recorded speed, while the approved building, raised signs and framing stay outside the moving region. The loop remains 25.5 seconds. Reproduction: `tools/daytime-natural-street.py`; registration and validation are retained with the source.
+
+Both daytime audio tracks are reduced by another 6 dB, measured from −39 to approximately −45 dBFS mean. Desktop video is copied without re-encoding. Mobile retains 2160 × 3840 output and desktop 3840 × 2160; these remain enhanced exports from lower-resolution footage. Nighttime clips, local-time scheduling, launch information, inquiry forms and progressive streaming remain as approved.

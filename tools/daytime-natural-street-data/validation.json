@@ -1,0 +1,65 @@
+{
+  "approved_sha256": "24fa188db107f3bd3a40d313438dc08e13e39ad1f039e4b81f3b32fb64de0057",
+  "source_sha256": "98f919d9411881bfc9ae3631dfe088460e114aa2e5451e1efc34277e152dacf1",
+  "output_sha256": "e86ac3665cb6951ec1fedf63776bdf1ba8bba0e457c514a7b9dd5bcc5848fbbb",
+  "video": {
+    "width": 2160,
+    "height": 3840,
+    "r_frame_rate": "30/1",
+    "duration": "25.500000",
+    "nb_frames": "765"
+  },
+  "audio_gain_db": -6,
+  "motion": "original source frames 0\u2013764 at 30 fps; no interpolation, reversing or slow motion",
+  "changed_area": {
+    "box": [
+      1265,
+      2616,
+      2160,
+      3629
+    ],
+    "native_polygon": [
+      [
+        315,
+        635
+      ],
+      [
+        355,
+        642
+      ],
+      [
+        511,
+        741
+      ],
+      [
+        511,
+        838
+      ],
+      [
+        437,
+        803
+      ],
+      [
+        376,
+        759
+      ],
+      [
+        319,
+        751
+      ],
+      [
+        312,
+        729
+      ],
+      [
+        319,
+        698
+      ],
+      [
+        325,
+        670
+      ]
+    ]
+  },
+  "building_and_signs": "outside the moving footage mask"
+}

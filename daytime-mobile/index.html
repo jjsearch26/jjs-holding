@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="jjs-launch-page jjs-portrait-preview" lang="en" data-layout="full-bleed" data-release="mounted-sign-mobile-loop-20261022">
+<html class="jjs-launch-page jjs-portrait-preview" lang="en" data-layout="full-bleed" data-release="daytime-natural-street-softer-20261022">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -210,8 +210,8 @@ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] #fullscreen{disp
 </head>
 <body>
 <main class="holding-page" aria-label="Jonathan James Search — launching January 2027">
-  <img class="film film-poster" id="film-poster" src="/posters/daytime-mobile-mounted-v1.jpg" alt="Jonathan James Search branding fitted to the glass of an Austin building">
-  <video id="film" class="film film-video" data-film="daytime-mobile-mounted-4k-v1" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback controlslist="nodownload noremoteplayback nofullscreen" preload="auto" poster="/posters/daytime-mobile-mounted-v1.jpg" aria-label="JJS daytime launch film"></video>
+  <img class="film film-poster" id="film-poster" src="/posters/daytime-mobile-natural-street-v1.jpg" alt="Jonathan James Search branding fitted to the glass of an Austin building">
+  <video id="film" class="film film-video" data-film="daytime-mobile-natural-street-softer-4k-v1" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback controlslist="nodownload noremoteplayback nofullscreen" preload="auto" poster="/posters/daytime-mobile-natural-street-v1.jpg" aria-label="JJS daytime launch film"></video>
 </main>
 <section class="jjs-launch-panel" aria-labelledby="jjs-launch-title">
   <div class="jjs-launch-copy">
@@ -230,7 +230,7 @@ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] #fullscreen{disp
 
 
 <p id="review-load-status" role="status" aria-live="polite" style="position:fixed;top:max(14px,env(safe-area-inset-top));right:max(14px,env(safe-area-inset-right));z-index:7;margin:0;padding:8px 11px;background:#071b2de8;color:#eee7dc;font:11px/1.3 Arial,Helvetica,sans-serif">Loading preview…</p>
-<script src="/approved-film-source.js?v=mounted-sign-mobile-loop-20261022"></script>
+<script src="/approved-film-source.js?v=daytime-natural-street-softer-20261022"></script>
 <script>window.JJS_APPROVED_MEDIA="./qa-day-mobile.mp4";</script>
 <script>
 (() => {
@@ -282,7 +282,7 @@ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] #fullscreen{disp
     const state = {};
     loads.set(video, state);
     video.pause();
-    catalogue ??= fetch('/films.json?v=mounted-sign-mobile-loop-20261022').then(response => {
+    catalogue ??= fetch('/films.json?v=daytime-natural-street-softer-20261022').then(response => {
       if (!response.ok) throw new Error('Film list unavailable');
       return response.json();
     }).catch(error => { catalogue = null; throw error; });

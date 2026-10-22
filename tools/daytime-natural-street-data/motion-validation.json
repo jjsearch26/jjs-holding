@@ -1,0 +1,37 @@
+[
+  {
+    "frame": 0,
+    "sign_psnr_db": 40.82955985764197,
+    "street_change_vs_start": 0.0
+  },
+  {
+    "frame": 90,
+    "sign_psnr_db": 40.73370657947257,
+    "street_change_vs_start": 3.7299593023255815
+  },
+  {
+    "frame": 180,
+    "sign_psnr_db": 40.70569882044375,
+    "street_change_vs_start": 4.186449612403101
+  },
+  {
+    "frame": 360,
+    "sign_psnr_db": 40.86630546491704,
+    "street_change_vs_start": 4.791149224806202
+  },
+  {
+    "frame": 540,
+    "sign_psnr_db": 40.90319110485048,
+    "street_change_vs_start": 4.816670542635659
+  },
+  {
+    "frame": 720,
+    "sign_psnr_db": 40.87410851248144,
+    "street_change_vs_start": 5.196581395348837
+  },
+  {
+    "frame": 764,
+    "sign_psnr_db": 40.77365697331579,
+    "street_change_vs_start": 5.044054263565892
+  }
+]

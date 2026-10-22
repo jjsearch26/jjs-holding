@@ -27,8 +27,8 @@ test('daytime selects the approved mounted signs at desktop and portrait 4K size
   const mobile = schedule.select(day, true);
   assert.deepEqual([films[desktop.key].width, films[desktop.key].height], [3840, 2160]);
   assert.deepEqual([films[mobile.key].width, films[mobile.key].height], [2160, 3840]);
-  assert.equal(films[desktop.key].sha256, 'ce221d7299aadde5e1c60ec1f1e64c060ac1677bfc6e9aa7ff2e35810d5867e4');
-  assert.equal(films[mobile.key].sha256, '24fa188db107f3bd3a40d313438dc08e13e39ad1f039e4b81f3b32fb64de0057');
+  assert.equal(films[desktop.key].sha256, '0de7240558ea89f498482c9a19630672a0290ae709c45694fe06abf7a5979330');
+  assert.equal(films[mobile.key].sha256, 'e86ac3665cb6951ec1fedf63776bdf1ba8bba0e457c514a7b9dd5bcc5848fbbb');
 });
 
 test('clock selection retains the 7am and 7pm boundaries', () => {

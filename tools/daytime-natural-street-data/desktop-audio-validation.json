@@ -1,0 +1,14 @@
+[
+  {
+    "file": "JJS-Daytime-Desktop-Mounted-4K.mp4",
+    "video_bitstream_sha256": "a7157f5719553ba4c664d1524bc8daa913504bd003cf773147570f27c0a90fa4",
+    "mean_dbfs": -39.0,
+    "peak_dbfs": -24.1
+  },
+  {
+    "file": "JJS-Daytime-Desktop-Softer-4K.mp4",
+    "video_bitstream_sha256": "a7157f5719553ba4c664d1524bc8daa913504bd003cf773147570f27c0a90fa4",
+    "mean_dbfs": -45.0,
+    "peak_dbfs": -30.1
+  }
+]

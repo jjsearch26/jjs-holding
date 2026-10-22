@@ -3,12 +3,12 @@
   function select(date, portrait) {
     const daytime = date.getHours() >= 7 && date.getHours() < 19;
     const format = portrait ? 'mobile' : 'desktop';
-    const key = daytime ? 'daytime-' + format + '-mounted-4k-v1' : portrait ? 'nighttime-mobile-4k-v1' : 'nighttime-desktop-mobile-loop-4k-v1';
+    const key = daytime ? (portrait ? 'daytime-mobile-natural-street-softer-4k-v1' : 'daytime-desktop-softer-4k-v1') : portrait ? 'nighttime-mobile-4k-v1' : 'nighttime-desktop-mobile-loop-4k-v1';
     return {
       key,
       format,
       period: daytime ? 'daytime' : 'nighttime',
-      poster: daytime ? '/posters/daytime-' + format + '-mounted-v1.jpg' : '/posters/night-mobile-glass.jpg?v=mobile-loop-v1',
+      poster: daytime ? (portrait ? '/posters/daytime-mobile-natural-street-v1.jpg' : '/posters/daytime-desktop-mounted-v1.jpg') : '/posters/night-mobile-glass.jpg?v=mobile-loop-v1',
       speed: 1,
       audio: 'embedded',
       position: daytime ? '50% 12%' : '50% 18%'

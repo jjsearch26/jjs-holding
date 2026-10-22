@@ -1,0 +1,18 @@
+{
+  "tracks": [
+    {
+      "file": "JJS-Daytime-Desktop-Softer-4K.mp4",
+      "mean_dbfs": -45.0,
+      "peak_dbfs": -30.1,
+      "decoded_samples": 1224704
+    },
+    {
+      "file": "JJS-Daytime-Mobile-Natural-Street-Softer-4K.mp4",
+      "mean_dbfs": -45.0,
+      "peak_dbfs": -30.1,
+      "decoded_samples": 1224704
+    }
+  ],
+  "matching_decoded_audio_snr_db": 79.28604888916016,
+  "both_gain_db_vs_previous": -6
+}
