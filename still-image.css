@@ -1,10 +1,3 @@
 /* Images remain fixed: no pan, zoom, loop or transition. */
 main:has(> #film-poster){container-type:size}
 #film-poster{animation:none;transition:none}
-html[data-media="image"] #film-poster[data-scene="nighttime-mobile"]{
-  inset:0 auto auto 50%;
-  width:max(140.992167cqw,79.353417cqh);
-  height:max(250.391645cqw,140.925790cqh);
-  max-width:none;object-fit:fill;object-position:0 0;
-  transform:translateX(-47.12962963%);
-}

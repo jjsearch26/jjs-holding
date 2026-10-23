@@ -1,0 +1,29 @@
+{
+  "release": "night-mobile-wide-20261023",
+  "night_mobile_zoom": "removed",
+  "image_unchanged": true,
+  "image_pixels": [
+    2160,
+    3836
+  ],
+  "image_sha256": "917f56d70206a0d016d78d9737f0931622b741de03a76936bdbdedef18417777",
+  "phone_viewports": [
+    [
+      390,
+      844
+    ],
+    [
+      320,
+      568
+    ],
+    [
+      430,
+      932
+    ]
+  ],
+  "launch_information_visible": true,
+  "image_animation": "none",
+  "video_elements": 0,
+  "audio_unchanged": true,
+  "daytime_and_night_desktop_framing_unchanged": true
+}
