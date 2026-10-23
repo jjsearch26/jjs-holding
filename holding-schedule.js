@@ -4,13 +4,13 @@
     const daytime = date.getHours() >= 7 && date.getHours() < 19;
     const format = portrait ? 'mobile' : 'desktop';
     const period = daytime ? 'daytime' : 'nighttime';
-    const key = period + '-' + format + '-still-' + (!daytime && portrait ? 'v2' : 'v1');
+    const key = period + '-' + format + '-still-' + (portrait ? 'v2' : 'v1');
     return {
       key,
       type: 'image',
       format,
       period,
-      poster: daytime ? (portrait ? '/images/daytime-mobile-still-v1.jpg' : '/images/daytime-desktop-clear-v2.jpg') : portrait ? '/images/nighttime-mobile-clean-v2.jpg' : '/images/nighttime-building-still-v1.jpg',
+      poster: daytime ? (portrait ? '/images/daytime-mobile-clear-v2.jpg' : '/images/daytime-desktop-clear-v2.jpg') : portrait ? '/images/nighttime-mobile-clean-v2.jpg' : '/images/nighttime-building-still-v1.jpg',
       audio: 'separate',
       audioSource: daytime ? '/daytime-quiet-still-v1.m4a' : '/nighttime-still-ambience-v1.m4a',
       position: daytime ? '50% 12%' : '50% 18%'
