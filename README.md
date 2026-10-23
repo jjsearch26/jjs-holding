@@ -2,7 +2,7 @@
 
 Published at https://jonathanjamessearch.com/ from `main` on Cloudflare Pages. No build command; publish the repository root.
 
-All day and night pages now show fixed, high-quality images. There is no video element, pan, zoom, loop or image animation on the main page or the six fixed review routes. Night-time mobile uses the wider full-frame 2160 × 3836 still, leaving a dark area behind the launch information. It has no additional image zoom. The desktop night view retains its approved landscape fit. The bed is hidden. Building signs have no date; the separate “Launching January 2027” message remains visible.
+All day and night pages now show fixed, high-quality images. There is no video element, pan, zoom, loop or image animation on the main page or the six fixed review routes. Night-time mobile uses a retouched 2160 × 3840 enhanced still in the wider framing, with matched dark tones around the sign and improved perceived clarity. The edit was made with the built-in image tool and exported for the website; it does not represent newly captured native-camera 4K detail. The dark foreground keeps the launch information readable. It has no additional image zoom. The desktop night view retains its approved landscape fit. The bed is hidden. Building signs have no date; the separate “Launching January 2027” message remains visible.
 
 Daytime desktop uses the approved 3840 × 2160 still; daytime mobile uses the approved 2160 × 3840 still. Night uses frame 480 (20 seconds) of the latest approved 2160 × 3836 neon master. These are enhanced assets from compressed source footage, not newly captured native 4K photography. No new detail is invented. Source hashes and verification are retained in `tools/all-still-images-data/`.
 

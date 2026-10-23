@@ -1,0 +1,44 @@
+{
+  "release": "night-mobile-clean-v2-20261023",
+  "image_sha256": "dc2d018cf5f8e2ae1d17164840f8af6cdf1b7a171273b077e8febd278e752ebd",
+  "export_pixels": [
+    2160,
+    3840
+  ],
+  "generated_edit_pixels": [
+    941,
+    1672
+  ],
+  "enhanced_not_native_camera_4k": true,
+  "wider_mobile_framing": true,
+  "sky_correction": {
+    "previous_right_sky_rgb_y180": [
+      9,
+      15,
+      28
+    ],
+    "previous_right_sky_rgb_y195": [
+      17,
+      21,
+      33
+    ],
+    "corrected_right_sky_rgb_y180": [
+      8,
+      15,
+      29
+    ],
+    "corrected_right_sky_rgb_y195": [
+      8,
+      15,
+      29
+    ]
+  },
+  "browser_phone_viewport": [
+    390,
+    844
+  ],
+  "launch_text_and_inquiry_visible": true,
+  "audio_unchanged": true,
+  "other_three_scene_asset_paths_unchanged": true,
+  "mobile_only_asset": true
+}
