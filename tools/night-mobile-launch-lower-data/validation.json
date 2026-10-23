@@ -1,0 +1,11 @@
+{
+  "change": "Lower night mobile launch information into black foreground",
+  "visualChecks": {
+    "390x844": "passed",
+    "320x568": "passed",
+    "430x932": "passed"
+  },
+  "buttonClearance": "passed",
+  "imageBytes": "unchanged",
+  "scope": "night mobile only"
+}
