@@ -10,7 +10,7 @@
       type: 'image',
       format,
       period,
-      poster: daytime ? (portrait ? '/images/daytime-mobile-clear-v2.jpg' : '/images/daytime-desktop-clear-v2.jpg') : portrait ? '/images/nighttime-mobile-clean-v2.jpg' : '/images/nighttime-building-still-v1.jpg',
+      poster: daytime ? (portrait ? '/images/daytime-mobile-clear-v2.jpg' : '/images/daytime-desktop-clear-v3.jpg') : portrait ? '/images/nighttime-mobile-clean-v2.jpg' : '/images/nighttime-building-still-v1.jpg',
       audio: 'separate',
       audioSource: daytime ? '/daytime-quiet-still-v1.m4a' : '/nighttime-still-ambience-v1.m4a',
       position: daytime ? '50% 12%' : '50% 18%'

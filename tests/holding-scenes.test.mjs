@@ -87,7 +87,7 @@ async function player(hour = 12) {
 test('daytime is a fixed image with no video or audio downloaded initially', async () => {
   const p = await player();
   assert.equal(p.document.documentElement.dataset.media, 'image');
-  assert.equal(p.elements['film-poster'].src, '/images/daytime-desktop-clear-v2.jpg');
+  assert.equal(p.elements['film-poster'].src, '/images/daytime-desktop-clear-v3.jpg');
   assert.equal(p.elements['film-poster'].style.animation, 'none');
   assert.equal(p.elements['film-ambience'].src, '');
   assert.equal(p.loads.length, 0);
