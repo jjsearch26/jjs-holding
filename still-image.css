@@ -2,20 +2,27 @@
 main:has(> #film-poster){container-type:size}
 #film-poster{animation:none;transition:none}
 
-
-/* Place the complete night mobile launch block in the dark foreground. */
-html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] .jjs-launch-panel{
-  min-height:0;padding-top:16px;
-  padding-bottom:max(76px,calc(env(safe-area-inset-bottom) + 60px));
+/* Wider night mobile photograph with a black area reserved for readable copy. */
+html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] main{background:#000}
+html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] #film-poster{
+ height:calc(100% - clamp(190px,26cqh,240px) - env(safe-area-inset-bottom));object-fit:cover;object-position:50% 0;
+ mask-image:linear-gradient(#000 0%,#000 calc(100% - 24px),transparent 100%);
 }
-html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] .jjs-launch-copy::before{margin-bottom:4px}
-html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] .jjs-launch-brand{margin-bottom:4px;font-size:9px;line-height:1.3}
-html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] .jjs-launch-title{font-size:clamp(21px,6.6vw,26px);line-height:1.06}
-html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] .jjs-launch-title span{display:inline}
-html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] .jjs-launch-description{margin-top:6px;font-size:11px;line-height:1.35}
-@media(orientation:portrait) and (max-height:800px){
- html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] .jjs-launch-copy::before,
- html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] .jjs-launch-brand{display:none}
- html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] .jjs-launch-title{font-size:clamp(19px,6vw,24px);line-height:1.07}
- html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] .jjs-launch-description{margin-top:5px}
+html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] .jjs-launch-panel{
+ min-height:0;padding-top:16px;
+ padding-bottom:max(82px,calc(env(safe-area-inset-bottom) + 64px));
+ background:transparent;
+}
+html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] .jjs-launch-copy{max-width:390px;text-shadow:none}
+html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] .jjs-launch-copy::before,
+html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] .jjs-launch-brand{display:none}
+html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] .jjs-launch-panel .jjs-launch-title{
+ font-size:clamp(30px,8.2vw,36px);line-height:1.08;letter-spacing:-.4px;color:#fff;
+}
+html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] .jjs-launch-title span{display:block}
+html.jjs-launch-page[data-period="nighttime"][data-format="mobile"] .jjs-launch-description{
+ margin-top:10px;font-size:13px;line-height:1.4;color:#f7f5ef;
+}
+@media(orientation:landscape){
+ html.jjs-launch-page.jjs-portrait-preview[data-period="nighttime"][data-format="mobile"] .jjs-launch-panel .jjs-launch-title{font-size:clamp(23px,3.8dvh,36px)}
 }
