@@ -100,7 +100,7 @@ test('sound and orientation changes keep the daytime scene as a still', async ()
   assert.equal(p.elements['film-ambience'].src, '/daytime-quiet-still-v1.m4a');
   assert.equal(p.elements['film-ambience'].paused, false);
   await p.mobile();
-  assert.equal(p.elements['film-poster'].src, '/images/daytime-mobile-clear-v2.jpg');
+  assert.equal(p.elements['film-poster'].src, '/images/daytime-mobile-clear-v3.jpg');
   assert.equal(p.elements['film-ambience'].paused, false);
   assert.equal(p.loads.length, 0);
   await p.sound();
@@ -119,7 +119,7 @@ test('clock changes use only stills and switch optional ambience after consent',
   await p.mobile();
   assert.equal(p.elements['film-poster'].dataset.scene, 'nighttime-mobile');
   await p.hour(12);
-  assert.equal(p.elements['film-poster'].src, '/images/daytime-mobile-clear-v2.jpg');
+  assert.equal(p.elements['film-poster'].src, '/images/daytime-mobile-clear-v3.jpg');
   assert.equal(p.elements['film-ambience'].src, '/daytime-quiet-still-v1.m4a');
   assert.equal(p.loads.length, 0);
 });
