@@ -14,8 +14,8 @@ test('both night layouts select fixed images and optional shared ambience', () =
   const mobile = schedule.select(night, true);
   assert.equal(desktop.type, 'image');
   assert.equal(mobile.type, 'image');
-  assert.equal(desktop.poster, '/images/nighttime-building-still-v1.jpg');
-  assert.equal(mobile.poster, '/images/nighttime-mobile-clean-v2.jpg');
+  assert.equal(desktop.poster, '/images/nighttime-city-branded-v4.png');
+  assert.equal(mobile.poster, '/images/nighttime-city-branded-v4.png');
   assert.equal(mobile.format, 'mobile');
   assert.equal(desktop.format, 'desktop');
   assert.equal(desktop.audioSource, '/nighttime-still-ambience-v1.m4a');
@@ -29,7 +29,7 @@ test('daytime selects fixed images and the shared quieter audio', () => {
   assert.equal(desktop.type, 'image');
   assert.equal(mobile.type, 'image');
   assert.equal(desktop.poster, '/images/daytime-desktop-clear-v3.jpg');
-  assert.equal(mobile.poster, '/images/daytime-mobile-clear-v3.jpg');
+  assert.equal(mobile.poster, '/images/daytime-mobile-still-v1.jpg');
   assert.equal(desktop.audio, 'separate');
   assert.equal(desktop.audioSource, '/daytime-quiet-still-v1.m4a');
   assert.equal(desktop.audioSource, mobile.audioSource);

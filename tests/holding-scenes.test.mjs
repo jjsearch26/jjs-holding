@@ -88,56 +88,54 @@ test('daytime is a fixed image with no video or audio downloaded initially', asy
   const p = await player();
   assert.equal(p.document.documentElement.dataset.media, 'image');
   assert.equal(p.elements['film-poster'].src, '/images/daytime-desktop-clear-v3.jpg');
-  assert.equal(p.elements['film-poster'].style.animation, 'none');
+  assert.equal(p.elements['film-poster'].style.objectPosition, '50% 12%');
   assert.equal(p.elements['film-ambience'].src, '');
   assert.equal(p.loads.length, 0);
   assert.ok(p.videos.every(video => !video.src && video.paused));
 });
 
-test('sound and orientation changes keep the daytime scene as a still', async () => {
+test('orientation changes load the approved mobile still without audio', async () => {
   const p = await player();
-  await p.sound();
-  assert.equal(p.elements['film-ambience'].src, '/daytime-quiet-still-v1.m4a');
-  assert.equal(p.elements['film-ambience'].paused, false);
+  assert.equal(p.elements['film-ambience'].src, '');
+  assert.equal(p.elements['film-ambience'].paused, true);
   await p.mobile();
-  assert.equal(p.elements['film-poster'].src, '/images/daytime-mobile-clear-v3.jpg');
-  assert.equal(p.elements['film-ambience'].paused, false);
+  assert.equal(p.elements['film-poster'].src, '/images/daytime-mobile-still-v1.jpg');
+  assert.equal(p.elements['film-ambience'].paused, true);
   assert.equal(p.loads.length, 0);
-  await p.sound();
   assert.equal(p.elements['film-ambience'].paused, true);
   assert.ok(p.videos.every(video => !video.src));
 });
 
-test('clock changes use only stills and switch optional ambience after consent', async () => {
+test('clock changes switch between approved stills without audio', async () => {
   const p = await player();
-  await p.sound();
   await p.hour(21);
   assert.equal(p.document.documentElement.dataset.media, 'image');
-  assert.equal(p.elements['film-poster'].src, '/images/nighttime-building-still-v1.jpg');
+  assert.equal(p.elements['film-poster'].src, '/images/nighttime-city-branded-v4.png');
   assert.equal(p.elements['film-poster'].dataset.scene, 'nighttime-desktop');
-  assert.equal(p.elements['film-ambience'].src, '/nighttime-still-ambience-v1.m4a');
+  assert.equal(p.elements['film-ambience'].src, '');
   await p.mobile();
   assert.equal(p.elements['film-poster'].dataset.scene, 'nighttime-mobile');
   await p.hour(12);
-  assert.equal(p.elements['film-poster'].src, '/images/daytime-mobile-clear-v3.jpg');
-  assert.equal(p.elements['film-ambience'].src, '/daytime-quiet-still-v1.m4a');
+  assert.equal(p.elements['film-poster'].src, '/images/daytime-mobile-still-v1.jpg');
+  assert.equal(p.elements['film-ambience'].src, '');
   assert.equal(p.loads.length, 0);
 });
 
 test('a first visit at night loads a still without downloading audio or video', async () => {
   const p = await player(21);
   assert.equal(p.document.documentElement.dataset.media, 'image');
-  assert.equal(p.elements['film-poster'].src, '/images/nighttime-building-still-v1.jpg');
+  assert.equal(p.elements['film-poster'].src, '/images/nighttime-city-branded-v4.png');
   assert.equal(p.elements['film-ambience'].src, '');
   assert.equal(p.loads.length, 0);
   assert.ok(p.videos.every(video => !video.src && video.paused));
 });
 
 test('current home and fixed routes contain no video or video loading scripts', async () => {
-  for (const route of ['', 'daytime-desktop/', 'daytime-mobile/', 'nighttime-desktop/', 'nighttime-mobile/', 'nighttime-desktop-cropped/', 'nighttime-mobile-cropped/']) {
+  for (const route of ['', 'daytime-desktop/', 'daytime-mobile/', 'nighttime-desktop/', 'nighttime-mobile/']) {
     const html = await readFile(new URL('../' + route + 'index.html', import.meta.url), 'utf8');
     assert.doesNotMatch(html, /<video\b/i, route);
     assert.doesNotMatch(html, /<script[^>]+(?:film-loader|approved-film-source|review-media|night-mobile-crop)\.js/i, route);
+    assert.doesNotMatch(html, /id="sound"|<audio\b/i, route);
     assert.match(html, /Launching <span>January 2027<\/span>/, route);
   }
 });

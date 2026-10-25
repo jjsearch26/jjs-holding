@@ -1,0 +1,22 @@
+/* Keep the launch copy and controls anchored beneath the photograph. */
+html[data-period="nighttime"] .film-controls{flex-direction:column;align-items:flex-end;gap:14px}
+html[data-period="nighttime"] .jjs-corner-logo{display:block;width:68px;height:auto;object-fit:contain;mix-blend-mode:screen;pointer-events:none}
+html[data-period="nighttime"] .jjs-launch-panel{background:linear-gradient(transparent,rgba(0,0,0,.8));padding-top:45px}
+html[data-period="nighttime"] .jjs-launch-copy{max-width:min(620px,calc(100vw - 160px))}
+@media(max-width:700px){
+ html[data-period="nighttime"] .jjs-corner-logo{width:48px}
+ html[data-period="nighttime"] .film-controls{gap:12px}
+ html[data-period="nighttime"] .jjs-launch-copy{max-width:calc(100vw - 115px)}
+ html[data-period="nighttime"] .jjs-launch-panel .jjs-launch-title{font-size:clamp(26px,7.4vw,36px)}
+}
+
+/* Equal-width logo box and sound button, centered in a single column. */
+html[data-period="nighttime"] .film-controls{display:grid;grid-template-columns:max-content;justify-items:stretch;gap:10px}
+html[data-period="nighttime"] .film-controls .film-control{min-width:96px}
+html[data-period="nighttime"] .jjs-corner-brand{display:grid;place-items:center;width:100%;height:80px;border:1px solid #b99a5e99;background:#071b2de8;pointer-events:none}
+html[data-period="nighttime"] .jjs-corner-brand .jjs-corner-logo{width:44px;height:auto}
+@media(max-width:700px){
+ html[data-period="nighttime"] .film-controls .film-control{min-width:80px}
+ html[data-period="nighttime"] .jjs-corner-brand{height:68px}
+ html[data-period="nighttime"] .jjs-corner-brand .jjs-corner-logo{width:36px}
+}

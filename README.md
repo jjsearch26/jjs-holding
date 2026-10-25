@@ -2,24 +2,16 @@
 
 Published at https://jonathanjamessearch.com/ from `main` on Cloudflare Pages. No build command; publish the repository root.
 
-All day and night pages now show fixed, high-quality images. There is no video element, pan, zoom, loop or image animation on the main page or the six fixed review routes. Night-time mobile uses a retouched 2160 × 3840 enhanced still in the wider framing, with matched dark tones around the sign and improved perceived clarity. The edit was made with the built-in image tool and exported for the website; it does not represent newly captured native-camera 4K detail. The dark foreground keeps the launch information readable. It has no additional image zoom. The desktop night view retains its approved landscape fit. The bed is hidden. Building signs have no date; the separate “Launching January 2027” message remains visible.
+The homepage and four day/night desktop/mobile routes use the approved fixed photographs and navy/gold launch box. Both nighttime layouts use the brighter building signage photograph. The corner monogram is white, framed in gold, with Start a conversation directly underneath. Daytime layouts have no corner logo. The launch box shares the contact button’s bottom edge.
 
-Daytime desktop uses the approved 3840 × 2160 still; daytime mobile uses a clarity-enhanced 2160 × 3840 export, matching the desktop treatment across the glass facade, background buildings, balconies and street. The portrait framing is retained. This is an AI-enhanced image exported from a 940 × 1672 generated result, not native captured 4K detail; the original mobile still is retained. Night uses frame 480 (20 seconds) of the latest approved 2160 × 3836 neon master. These are enhanced assets from compressed source footage, not newly captured native 4K photography. No new detail is invented. Source hashes and verification are retained in `tools/all-still-images-data/`.
+There are no sound controls, audio elements, or playback scripts on the current homepage and these four routes. Legacy media, streaming functions, and archived routes are retained for previously opened pages.
 
-`holding-schedule.js` selects daytime from local 07:00 to 19:00 and night-time outside those hours, with the mobile layout on portrait screens up to 900px. `holding.js` loads and decodes the selected image before replacing it and responds to orientation, clock, timezone, visibility and focus changes. Images have no transition. No film or audio downloads on initial load.
+`holding-schedule.js` selects daytime from the visitor’s local 07:00 to 19:00 and nighttime otherwise, with mobile in portrait up to 900px. `holding.js` decodes the selected still before displaying it and responds to orientation, clock, visibility, focus, and connectivity changes. Images do not animate.
 
-Sound remains optional and initially off. `still-image.js` controls sound on the fixed pages. Daytime retains the approved quieter AAC track; night-time audio is copied from the approved film without re-encoding or changing its level. Audio loads only after Sound on and pauses when the page is hidden or sound is switched off.
+The images are enhanced exports from the approved source material, not newly captured native 4K photography. The day mobile image matches the approved review page.
 
-Fixed review pages:
+Fixed routes: `/daytime-desktop/`, `/daytime-mobile/`, `/nighttime-desktop/`, `/nighttime-mobile/`. Legacy cropped review routes remain unchanged.
 
-- `/daytime-desktop/`
-- `/daytime-mobile/`
-- `/nighttime-desktop/`
-- `/nighttime-mobile/`
-- `/nighttime-desktop-cropped/` (same still as night-time desktop)
-- `/nighttime-mobile-cropped/` (same still as the closer night-time mobile view)
+The inquiry form requires name, work email, and message; company is optional. Delivery uses the existing FormSubmit AJAX endpoint for jonathan.mcmanus@jj-search.com, with direct email fallback. Do not submit test inquiries without authorization.
 
-The compact Start a conversation button and existing inquiry forms remain. Name, work email and inquiry are required; company is optional. Delivery uses the existing FormSubmit AJAX endpoint for jonathan.mcmanus@jj-search.com. Keep provider activation and the direct email fallback. Do not submit test inquiries without authorization.
-
-Run `node --test tests/*.test.mjs`. The older video assets and streaming function remain available for previously opened pages and archival previews; current launch pages do not request them.
-
+Run `node --test tests/*.test.mjs`.

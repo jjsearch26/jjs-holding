@@ -208,11 +208,11 @@ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] #fullscreen{disp
 </style>
 <style>html[data-media="image"] #film-poster{animation:none;transform:none;transition:none}</style>
 <link rel="stylesheet" href="/still-image.css?v=day-desktop-clear-v3-20261023">
+<link rel="stylesheet" href="/launch-box.css?v=20261025-4">
 </head>
 <body>
 <main class="holding-page" aria-label="Jonathan James Search — launching January 2027">
   <img width="3840" height="2160" fetchpriority="high" decoding="sync" class="film film-poster" id="film-poster" src="/images/daytime-desktop-clear-v3.jpg" alt="Jonathan James Search branding fitted to the glass of an Austin building">
-  <audio id="film-ambience" data-src="/daytime-quiet-still-v1.m4a" loop preload="none"></audio>
 </main>
 <section class="jjs-launch-panel" aria-labelledby="jjs-launch-title">
   <div class="jjs-launch-copy">
@@ -221,15 +221,13 @@ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] #fullscreen{disp
     <p class="jjs-launch-description">Executive search and talent advisory.</p>
   </div>
 </section>
-<div class="film-controls" aria-label="Sound controls">
-  <button class="film-control" id="sound" type="button" aria-pressed="false" disabled>Sound on</button>
+<div class="film-controls" aria-label="Contact Jonathan James Search">
 </div>
 <p class="sr-only" id="status" role="status" aria-live="polite"></p>
 <noscript><p class="no-script-contact">Launching January 2027. <a href="mailto:jonathan.mcmanus@jj-search.com">Contact JJS</a></p></noscript>
 
 
 
-<script src="/still-image.js?v=day-desktop-clear-v3-20261023"></script>
 <script>
 (() => {
   'use strict';
@@ -273,7 +271,8 @@ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] #fullscreen{disp
         <button class="jjs-inquiry-send" type="button" data-inquiry-return>Return to JJS <span class="jjs-contact-arrow" aria-hidden="true">→</span></button>
       </div>
     </div>`;
-  document.body.append(launcher, dialog);
+  document.body.append(dialog);
+  document.querySelector('.film-controls').append(launcher);
 
   const trigger = launcher.querySelector('button');
   const panel = dialog.querySelector('.jjs-inquiry-panel');

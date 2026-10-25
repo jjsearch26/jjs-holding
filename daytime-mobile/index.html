@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="jjs-launch-page jjs-portrait-preview" lang="en" data-layout="full-bleed" data-release="day-mobile-clear-v3-background" data-format="mobile" data-period="daytime" data-media="image" data-film="daytime-mobile-still-v3">
+<html class="jjs-launch-page jjs-portrait-preview" lang="en" data-layout="full-bleed" data-release="all-still-images-20261022" data-format="mobile" data-period="daytime" data-media="image" data-film="daytime-mobile-still-v1">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -209,11 +209,11 @@ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] #fullscreen{disp
 <style>@media(orientation:landscape){.holding-page{left:50%;right:auto;width:56.25dvh;transform:translateX(-50%)}}</style>
 <style>html[data-media="image"] #film-poster{animation:none;transform:none;transition:none}</style>
 <link rel="stylesheet" href="/still-image.css?v=all-still-images-20261022">
+<link rel="stylesheet" href="/launch-box.css?v=20261025-4">
 </head>
 <body>
 <main class="holding-page" aria-label="Jonathan James Search — launching January 2027">
-  <img width="2160" height="3840" fetchpriority="high" decoding="sync" class="film film-poster" id="film-poster" src="/images/daytime-mobile-clear-v3.jpg" alt="Jonathan James Search branding fitted to the glass of an Austin building">
-  <audio id="film-ambience" data-src="/daytime-quiet-still-v1.m4a" loop preload="none"></audio>
+  <img width="2160" height="3840" fetchpriority="high" decoding="sync" class="film film-poster" id="film-poster" src="/images/daytime-mobile-still-v1.jpg" alt="Jonathan James Search branding fitted to the glass of an Austin building">
 </main>
 <section class="jjs-launch-panel" aria-labelledby="jjs-launch-title">
   <div class="jjs-launch-copy">
@@ -222,15 +222,13 @@ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] #fullscreen{disp
     <p class="jjs-launch-description">Executive search and talent advisory.</p>
   </div>
 </section>
-<div class="film-controls" aria-label="Sound controls">
-  <button class="film-control" id="sound" type="button" aria-pressed="false" disabled>Sound on</button>
+<div class="film-controls" aria-label="Contact Jonathan James Search">
 </div>
 <p class="sr-only" id="status" role="status" aria-live="polite"></p>
 <noscript><p class="no-script-contact">Launching January 2027. <a href="mailto:jonathan.mcmanus@jj-search.com">Contact JJS</a></p></noscript>
 
 
 
-<script src="/still-image.js?v=all-still-images-20261022"></script>
 <script>
 (() => {
   'use strict';
@@ -274,7 +272,8 @@ html.jjs-launch-page.jjs-portrait-preview[data-format="mobile"] #fullscreen{disp
         <button class="jjs-inquiry-send" type="button" data-inquiry-return>Return to JJS <span class="jjs-contact-arrow" aria-hidden="true">→</span></button>
       </div>
     </div>`;
-  document.body.append(launcher, dialog);
+  document.body.append(dialog);
+  document.querySelector('.film-controls').append(launcher);
 
   const trigger = launcher.querySelector('button');
   const panel = dialog.querySelector('.jjs-inquiry-panel');
