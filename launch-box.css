@@ -61,3 +61,5 @@ html[data-period="daytime"] .jjs-corner-brand{display:none}
 :root.jjs-launch-page[data-format="desktop"] .jjs-launch-brand-text{display:none}
 :root.jjs-launch-page[data-format="desktop"] .jjs-launch-wordmark,
 :root.jjs-launch-page[data-period="nighttime"][data-format="mobile"] .jjs-launch-wordmark{display:block;width:179px;max-width:100%;height:auto;mix-blend-mode:screen}
+/* Correct the source artwork's slight facade slope without stretching it. */
+.jjs-launch-wordmark{object-fit:contain;transform:skewY(-.8deg);transform-origin:left center}
