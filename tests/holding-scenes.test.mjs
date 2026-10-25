@@ -99,7 +99,7 @@ test('orientation changes load the approved mobile still without audio', async (
   assert.equal(p.elements['film-ambience'].src, '');
   assert.equal(p.elements['film-ambience'].paused, true);
   await p.mobile();
-  assert.equal(p.elements['film-poster'].src, '/images/daytime-mobile-still-v1.jpg');
+  assert.equal(p.elements['film-poster'].src, '/images/daytime-mobile-clear-v3.jpg');
   assert.equal(p.elements['film-ambience'].paused, true);
   assert.equal(p.loads.length, 0);
   assert.equal(p.elements['film-ambience'].paused, true);
@@ -116,7 +116,7 @@ test('clock changes switch between approved stills without audio', async () => {
   await p.mobile();
   assert.equal(p.elements['film-poster'].dataset.scene, 'nighttime-mobile');
   await p.hour(12);
-  assert.equal(p.elements['film-poster'].src, '/images/daytime-mobile-still-v1.jpg');
+  assert.equal(p.elements['film-poster'].src, '/images/daytime-mobile-clear-v3.jpg');
   assert.equal(p.elements['film-ambience'].src, '');
   assert.equal(p.loads.length, 0);
 });

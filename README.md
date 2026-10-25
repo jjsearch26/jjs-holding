@@ -15,3 +15,5 @@ Fixed routes: `/daytime-desktop/`, `/daytime-mobile/`, `/nighttime-desktop/`, `/
 The inquiry form requires name, work email, and message; company is optional. Delivery uses the existing FormSubmit AJAX endpoint for jonathan.mcmanus@jj-search.com, with direct email fallback. Do not submit test inquiries without authorization.
 
 Run `node --test tests/*.test.mjs`.
+
+Release: approved launch preview version 34 (8e0fd26). All four launch boxes use the same reference treatment and wordmark width. Daytime mobile uses the clear-v3 photograph. Publish authorization was explicitly provided after preview approval. Future changes must return to preview first.
