@@ -3,136 +3,331 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#faf7ef">
+<meta name="theme-color" content="#071b2d">
 <meta name="description" content="Jonathan James Search privacy and data promise for clients, candidates and website visitors.">
 <title>Privacy & Data Promise | Jonathan James Search</title>
 <style>
-:root{--navy:#10263c;--ivory:#faf7ef;--gold:#b49861;--ink:#172b3d;--muted:#65717a;--line:#d8d3c7}
+:root{
+  --navy:#071b2d;
+  --navy-soft:#10263c;
+  --ivory:#faf7ef;
+  --gold:#b49861;
+  --gold-light:#d6c193;
+  --ink:#172b3d;
+  --muted:#65717a;
+  --line:#d8d3c7;
+  --inset:clamp(22px,4vw,64px);
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--ivory);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
 a{color:inherit}
-.site-header{position:sticky;top:0;z-index:10;background:rgba(250,247,239,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(16,38,60,.12)}
-.header-inner{width:min(1180px,calc(100% - 40px));margin:0 auto;min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.logo{display:block;width:min(360px,47vw);height:auto}
-.back{font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:4px}
-.hero{background:var(--navy);color:var(--ivory);padding:88px 20px 82px}
-.hero-inner{width:min(980px,100%);margin:0 auto}
-.eyebrow{margin:0 0 18px;color:#d6c193;font-size:11px;letter-spacing:.17em;text-transform:uppercase}
-h1{max-width:820px;margin:0;font:400 clamp(42px,6vw,72px)/1.02 Georgia,'Times New Roman',serif;letter-spacing:-1.3px}
-.lede{max-width:720px;margin:24px 0 0;color:#ece7de;font-size:16px;line-height:1.7}
-.content{width:min(980px,calc(100% - 40px));margin:0 auto;padding:76px 0 88px}
-.section h2{margin:0;justify-self:start;text-align:left;color:var(--navy);font:400 25px/1.15 Georgia,'Times New Roman',serif;letter-spacing:-.4px}
-.section p,.section li{font-size:15px;line-height:1.72}
-.section{display:grid;grid-template-columns:250px 1fr;gap:48px;padding:42px 0;border-bottom:1px solid var(--line)}
-.section h2{font-size:25px}
+
+.hero{
+  position:relative;
+  min-height:min(72vh,760px);
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+  background:var(--navy);
+  color:var(--ivory);
+}
+.hero-media,
+.hero-media picture,
+.hero-media img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+.hero-media img{
+  display:block;
+  object-fit:cover;
+  object-position:center 22%;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(4,19,33,.90) 0%,rgba(4,19,33,.76) 38%,rgba(4,19,33,.34) 70%,rgba(4,19,33,.18) 100%),
+    linear-gradient(0deg,rgba(4,19,33,.54) 0%,rgba(4,19,33,.08) 58%,rgba(4,19,33,.22) 100%);
+}
+.hero-top{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  z-index:3;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  min-height:94px;
+  padding:max(22px,env(safe-area-inset-top)) var(--inset) 18px;
+}
+.hero-logo{
+  display:block;
+  width:min(360px,46vw);
+  height:auto;
+  filter:brightness(0) invert(1);
+}
+.hero-back{
+  color:var(--ivory);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  text-decoration:none;
+  border-bottom:1px solid rgba(214,193,147,.8);
+  padding-bottom:5px;
+}
+.hero-copy{
+  position:relative;
+  z-index:2;
+  width:min(1080px,100%);
+  padding:160px var(--inset) clamp(62px,8vw,96px);
+}
+.hero-copy::before{
+  content:"";
+  display:block;
+  width:44px;
+  height:1px;
+  margin-bottom:19px;
+  background:var(--gold-light);
+}
+.eyebrow{
+  margin:0 0 16px;
+  color:#e1cfa7;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+h1{
+  max-width:820px;
+  margin:0;
+  color:#fff;
+  font:400 clamp(45px,6vw,76px)/1.01 Georgia,'Times New Roman',serif;
+  letter-spacing:-1.5px;
+  text-wrap:balance;
+}
+.lede{
+  max-width:720px;
+  margin:24px 0 0;
+  color:#eee9df;
+  font-size:16px;
+  line-height:1.7;
+}
+
+.content{
+  width:min(1080px,calc(100% - (var(--inset) * 2)));
+  margin:0 auto;
+  padding:74px 0 92px;
+}
+.section{
+  display:grid;
+  grid-template-columns:260px minmax(0,1fr);
+  gap:54px;
+  padding:43px 0;
+  border-bottom:1px solid var(--line);
+}
+.section:first-child{padding-top:8px}
+.section h2{
+  justify-self:start;
+  margin:0;
+  color:var(--navy-soft);
+  font:400 25px/1.16 Georgia,'Times New Roman',serif;
+  letter-spacing:-.35px;
+  text-align:left;
+}
+.section p,.section li{
+  font-size:15px;
+  line-height:1.72;
+}
 .section p{margin:0 0 16px}
 .section ul{margin:0;padding-left:20px}
 .section li+li{margin-top:8px}
-.sms-box{margin-top:24px;padding:24px 26px;border:1px solid var(--gold);background:#fffdf8}
-.sms-box strong{display:block;margin-bottom:8px;color:var(--navy);font:400 20px/1.2 Georgia,'Times New Roman',serif}
+.sms-box{
+  margin-top:26px;
+  padding:25px 27px;
+  border:1px solid var(--gold);
+  background:#fffdf8;
+}
+.sms-box strong{
+  display:block;
+  margin-bottom:9px;
+  color:var(--navy-soft);
+  font:400 20px/1.2 Georgia,'Times New Roman',serif;
+}
 .sms-box p{margin:0}
-.contact-box{margin-top:46px;padding:32px 34px;background:var(--navy);color:var(--ivory)}
-.contact-box h2{margin:0 0 12px;font:400 28px/1.15 Georgia,'Times New Roman',serif}
-.contact-box p{margin:0;line-height:1.7}
-.contact-box a{color:#f1ddb0;text-underline-offset:3px}
-.meta{margin-top:24px!important;color:#c9c4ba;font-size:12px;line-height:1.6}
-footer{border-top:1px solid var(--line);padding:24px 20px 34px}
-.footer-inner{width:min(980px,100%);margin:0 auto;display:flex;justify-content:space-between;gap:24px;color:var(--muted);font-size:12px}
+
+.contact-box{
+  margin-top:52px;
+  padding:36px 38px;
+  background:var(--navy);
+  color:var(--ivory);
+}
+.contact-box::before{
+  content:"";
+  display:block;
+  width:38px;
+  height:1px;
+  margin-bottom:20px;
+  background:var(--gold);
+}
+.contact-box h2{
+  margin:0 0 13px;
+  font:400 30px/1.15 Georgia,'Times New Roman',serif;
+}
+.contact-box p{
+  margin:0;
+  line-height:1.7;
+}
+.contact-box a{
+  color:#f1ddb0;
+  text-underline-offset:3px;
+}
+.meta{
+  margin-top:24px!important;
+  color:#c9c4ba;
+  font-size:12px;
+  line-height:1.6;
+}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:25px var(--inset) 34px;
+  background:var(--ivory);
+}
+.footer-inner{
+  width:min(1080px,100%);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  color:var(--muted);
+  font-size:12px;
+}
 .footer-inner a{text-underline-offset:3px}
+
 @media(max-width:760px){
- .header-inner{width:min(100% - 28px,1180px);min-height:70px}
- .logo{width:min(290px,62vw)}
- .back{font-size:10px}
- .hero{padding:64px 18px 58px}
- h1{font-size:44px}
- .content{width:min(100% - 32px,980px);padding:48px 0 64px}
- .section{grid-template-columns:1fr;gap:18px}
- .section{padding:34px 0}
- .footer-inner{flex-direction:column}
+  :root{--inset:20px}
+  .hero{min-height:68dvh}
+  .hero-media img{object-position:center 18%}
+  .hero::after{
+    background:
+      linear-gradient(0deg,rgba(4,19,33,.88) 0%,rgba(4,19,33,.58) 55%,rgba(4,19,33,.28) 100%);
+  }
+  .hero-top{
+    min-height:76px;
+    padding-top:max(18px,env(safe-area-inset-top));
+  }
+  .hero-logo{width:min(295px,64vw)}
+  .hero-back{font-size:9px;letter-spacing:.12em}
+  .hero-copy{padding-top:132px;padding-bottom:54px}
+  h1{font-size:clamp(40px,11.5vw,55px);letter-spacing:-.9px}
+  .lede{font-size:14px;line-height:1.6}
+  .content{
+    width:calc(100% - 40px);
+    padding:46px 0 68px;
+  }
+  .section{
+    grid-template-columns:1fr;
+    gap:17px;
+    padding:34px 0;
+  }
+  .section:first-child{padding-top:8px}
+  .section h2{font-size:24px}
+  .contact-box{padding:30px 26px}
+  .footer-inner{flex-direction:column}
 }
 </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="header-inner">
-    <a href="/" aria-label="Jonathan James Search home"><img class="logo" src="/jjs-logo.svg" alt="Jonathan James Search"></a>
-    <a class="back" href="/">Back to JJS</a>
+
+<header class="hero">
+  <div class="hero-media" aria-hidden="true">
+    <picture>
+      <source media="(max-width:760px)" srcset="/images/daytime-mobile-clear-v3.jpg">
+      <img src="/images/daytime-desktop-clear-v3.jpg" alt="" width="3840" height="2160" fetchpriority="high">
+    </picture>
+  </div>
+
+  <div class="hero-top">
+    <a href="/" aria-label="Jonathan James Search home">
+      <img class="hero-logo" src="/jjs-logo.svg" alt="Jonathan James Search">
+    </a>
+    <a class="hero-back" href="/">Back to JJS</a>
+  </div>
+
+  <div class="hero-copy">
+    <p class="eyebrow">Privacy & Data Promise</p>
+    <h1>Your information deserves careful, responsible handling.</h1>
+    <p class="lede">Jonathan James Search (“JJS”) is committed to protecting the privacy of clients, candidates and professional contacts and to using personal information only for legitimate recruitment, advisory and business purposes.</p>
   </div>
 </header>
 
-<main>
-  <section class="hero">
-    <div class="hero-inner">
-      <p class="eyebrow">Privacy & Data Promise</p>
-      <h1>Your information deserves careful, responsible handling.</h1>
-      <p class="lede">Jonathan James Search (“JJS”) is committed to protecting the privacy of clients, candidates and professional contacts and to using personal information only for legitimate recruitment, advisory and business purposes.</p>
+<main class="content">
+  <section class="section" id="our-approach">
+    <h2>Our approach</h2>
+    <div>
+      <p>This page explains the kinds of personal information JJS may collect, how that information is used and how we protect it. We aim to collect only information that is relevant to our relationship with you.</p>
     </div>
   </section>
 
-  <div class="content">
-    <section class="section" id="our-approach">
-      <h2>Our approach</h2>
-      <div>
-        <p>This page explains the kinds of personal information JJS may collect, how that information is used and how we protect it. We aim to collect only information that is relevant to our relationship with you.</p>
+  <section class="section" id="information-collected">
+    <h2>What kind of personal information we collect</h2>
+    <div>
+      <p>Depending on how you interact with JJS, we may collect:</p>
+      <ul>
+        <li>contact information;</li>
+        <li>professional and career information;</li>
+        <li>business and client relationship information;</li>
+        <li>information you choose to provide through inquiries, forms, email, telephone calls or meetings; and</li>
+        <li>limited technical information needed to operate and secure our website and communications.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="how-used">
+    <h2>How personal information is used</h2>
+    <div>
+      <p>JJS may use personal information to communicate with you, respond to inquiries, support recruitment and executive search activity, assess relevant opportunities, deliver client services, maintain appropriate business records, operate our website and communications, and meet applicable legal or contractual obligations.</p>
+    </div>
+  </section>
+
+  <section class="section" id="sharing">
+    <h2>Who personal information is shared with</h2>
+    <div>
+      <p>JJS does not sell, rent or share personal information with third parties or affiliates for marketing or promotional purposes.</p>
+      <p>Personal information is not provided to third parties except where you specifically ask or authorize JJS to do so in connection with a recruitment, search or advisory process, where a service provider must process information solely on JJS's behalf to operate our website or communications, or where disclosure is required by law.</p>
+
+      <div class="sms-box" id="sms-consent">
+        <strong>SMS privacy commitment</strong>
+        <p><b>SMS consent is not shared with third parties.</b></p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section" id="information-collected">
-      <h2>What kind of personal information we collect</h2>
-      <div>
-        <p>Depending on how you interact with JJS, we may collect:</p>
-        <ul>
-          <li>contact information;</li>
-          <li>professional and career information;</li>
-          <li>business and client relationship information;</li>
-          <li>information you choose to provide through inquiries, forms, email, telephone calls or meetings; and</li>
-          <li>limited technical information needed to operate and secure our website and communications.</li>
-        </ul>
-      </div>
-    </section>
+  <section class="section" id="retention">
+    <h2>Data retention & security</h2>
+    <div>
+      <p>JJS retains personal information only for as long as reasonably necessary for the purpose for which it was collected, for appropriate business or recruitment recordkeeping, or where required by law or contract.</p>
+      <p>Reasonable administrative and technical safeguards are used to protect information against unauthorized access, loss, misuse or disclosure.</p>
+    </div>
+  </section>
 
-    <section class="section" id="how-used">
-      <h2>How personal information is used</h2>
-      <div>
-        <p>JJS may use personal information to communicate with you, respond to inquiries, support recruitment and executive search activity, assess relevant opportunities, deliver client services, maintain appropriate business records, operate our website and communications, and meet applicable legal or contractual obligations.</p>
-      </div>
-    </section>
+  <section class="section" id="choices">
+    <h2>Your choices</h2>
+    <div>
+      <p>You may ask JJS to review, correct or delete personal information we hold about you, subject to applicable legal and business recordkeeping requirements. You may also ask us to update your communication preferences.</p>
+    </div>
+  </section>
 
-    <section class="section" id="sharing">
-      <h2>Who personal information is shared with</h2>
-      <div>
-        <p>JJS does not sell, rent or share personal information with third parties or affiliates for marketing or promotional purposes.</p>
-        <p>Personal information is not provided to third parties except where you specifically ask or authorize JJS to do so in connection with a recruitment, search or advisory process, where a service provider must process information solely on JJS's behalf to operate our website or communications, or where disclosure is required by law.</p>
-
-        <div class="sms-box" id="sms-consent">
-          <strong>SMS privacy commitment</strong>
-          <p><b>SMS consent is not shared with third parties.</b></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="retention">
-      <h2>Data retention & security</h2>
-      <div>
-        <p>JJS retains personal information only for as long as reasonably necessary for the purpose for which it was collected, for appropriate business or recruitment recordkeeping, or where required by law or contract.</p>
-        <p>Reasonable administrative and technical safeguards are used to protect information against unauthorized access, loss, misuse or disclosure.</p>
-      </div>
-    </section>
-
-    <section class="section" id="choices">
-      <h2>Your choices</h2>
-      <div>
-        <p>You may ask JJS to review, correct or delete personal information we hold about you, subject to applicable legal and business recordkeeping requirements. You may also ask us to update your communication preferences.</p>
-      </div>
-    </section>
-
-    <section class="contact-box">
-      <h2>Questions about your information?</h2>
-      <p>Please contact Jonathan James Search through the <a href="/">website inquiry form</a>.</p>
-      <p class="meta">Last updated: November 2026.</p>
-    </section>
-  </div>
+  <section class="contact-box">
+    <h2>Questions about your information?</h2>
+    <p>Please contact Jonathan James Search through the <a href="/">website inquiry form</a>.</p>
+    <p class="meta">Last updated: November 2026.</p>
+  </section>
 </main>
 
 <footer>
@@ -141,5 +336,6 @@ footer{border-top:1px solid var(--line);padding:24px 20px 34px}
     <span><a href="/privacy.html">Privacy & Data Promise</a> · <a href="/">Home</a></span>
   </div>
 </footer>
+
 </body>
 </html>
